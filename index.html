@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Telvin Murimi — Portfolio</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -97,9 +98,7 @@
     .btn-outline:hover { border-color: var(--blue1); color: var(--blue1); }
 
     .hero-img-wrap { position: relative; flex-shrink: 0; }
-    .hero-circle-frame {
-      width: 420px; height: 500px; position: relative;
-    }
+    .hero-circle-frame { width: 420px; height: 500px; position: relative; }
     .hero-circle-bg {
       position: absolute; right: 0; top: 50%; transform: translateY(-50%);
       width: 380px; height: 380px; border-radius: 50%;
@@ -117,11 +116,8 @@
       border-radius: 200px 200px 0 0; overflow: hidden;
     }
     .hero-avatar img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: top center;
-      display: block;
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: top center; display: block;
     }
     .dot-grid {
       position: absolute; bottom: 20px; left: -10px;
@@ -136,10 +132,7 @@
       border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
       margin: 0 5%;
     }
-    .stat-item {
-      padding: 2rem 1.5rem; text-align: center;
-      border-right: 1px solid var(--border);
-    }
+    .stat-item { padding: 2rem 1.5rem; text-align: center; border-right: 1px solid var(--border); }
     .stat-item:last-child { border-right: none; }
     .stat-num { font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 900; color: var(--dark); }
     .stat-num span { background: linear-gradient(135deg, var(--blue1), var(--blue3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
@@ -194,10 +187,7 @@
       display: flex; flex-direction: column;
     }
     .project-card:hover { transform: translateY(-6px); box-shadow: 0 24px 60px rgba(59,130,246,0.13); border-color: var(--blue2); }
-    .project-preview {
-      position: relative; height: 220px; overflow: hidden; background: #0f172a;
-      cursor: pointer;
-    }
+    .project-preview { position: relative; height: 220px; overflow: hidden; background: #0f172a; cursor: pointer; }
     .project-preview iframe {
       width: 1440px; height: 900px;
       transform: scale(0.278); transform-origin: top left;
@@ -244,7 +234,6 @@
     .skill-pct { font-size: 0.82rem; color: var(--blue1); font-weight: 700; }
     .skill-track { height: 6px; background: #e5e7eb; border-radius: 10px; overflow: hidden; }
     .skill-fill { height: 100%; border-radius: 10px; background: linear-gradient(90deg, var(--blue1), var(--blue2)); }
-
     .skills-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
     .skill-card {
       background: var(--bg2); border: 1px solid var(--border);
@@ -322,14 +311,26 @@
       width: 100%;
     }
     .btn-send:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(59,130,246,0.35); }
+    .btn-send:disabled { opacity: 0.7; cursor: not-allowed; transform: none; box-shadow: none; }
+
+    /* TOAST */
+    .toast {
+      position: fixed; bottom: 2rem; right: 2rem; z-index: 999;
+      padding: 1rem 1.5rem; border-radius: 12px;
+      font-family: 'Manrope', sans-serif; font-size: 0.9rem; font-weight: 600;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+      transform: translateY(20px); opacity: 0;
+      transition: all 0.3s ease; pointer-events: none;
+    }
+    .toast.show { transform: translateY(0); opacity: 1; }
+    .toast.success { background: #10b981; color: #fff; }
+    .toast.error { background: #ef4444; color: #fff; }
 
     /* FOOTER */
     footer {
       background: var(--dark); padding: 2rem 5%;
       display: flex; align-items: center; justify-content: space-between;
     }
-    .footer-logo { color: #fff; font-weight: 700; font-size: 1rem; }
-    .footer-logo span { color: var(--blue2); }
     footer p { color: #6b7280; font-size: 0.82rem; }
 
     /* ANIMATIONS */
@@ -363,12 +364,13 @@
 </head>
 <body>
 
+<div class="toast" id="toast"></div>
+
 <nav>
   <a href="#" class="nav-logo">
     <div class="nav-logo-box">T</div>
     <span>PORTFOLIO</span>
   </a>
-
   <ul class="nav-links">
     <li><a href="#hero">Home</a></li>
     <li><a href="#about">About</a></li>
@@ -378,12 +380,18 @@
     <li><a href="#contact">Contact</a></li>
   </ul>
   <div style="display:flex;align-items:center;gap:0.8rem;">
+    <div class="nav-socials">
+      <a href="#">f</a>
+      <a href="#">t</a>
+      <a href="https://www.linkedin.com/in/telvin-murimi" target="_blank">in</a>
+    </div>
+    <a href="#contact" class="nav-subscribe">Subscribe</a>
   </div>
 </nav>
 
 <section class="hero" id="hero">
   <div class="hero-text">
-    <h1>Hi, I'm Tranquil<br/>Telvin
+    <h1>Hi! I'm Tranquil<br/>Telvin
       <span class="role">Software Engineer<br />&amp; Designer</span>
     </h1>
     <p>I'm a passionate creative professional specializing in modern design and development. I help brands and businesses create exceptional digital experiences that engage, inspire, and convert.</p>
@@ -392,7 +400,6 @@
       <a href="#contact" class="btn-outline">Hire Me Now</a>
     </div>
   </div>
-
   <div class="hero-img-wrap">
     <div class="hero-circle-frame">
       <div class="hero-circle-bg"></div>
@@ -470,7 +477,7 @@
           <span class="project-tag">Next.js</span>
         </div>
         <h3>Tembo Tours</h3>
-        <p>Kenya's premier safari company landing page, featuring cinematic hero imagery, tour packages, and booking flows for the Maasai Mara and beyond.</p>
+        <p>Kenya's premier safari company landing page — featuring cinematic hero imagery, tour packages, and booking flows for the Maasai Mara and beyond.</p>
         <a href="https://tembotours-one.vercel.app/" target="_blank" class="project-link">
           Visit site <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
         </a>
@@ -491,7 +498,7 @@
           <span class="project-tag">Dark UI</span>
         </div>
         <h3>SmartCV Builder</h3>
-        <p>An AI-powered resume builder landing page with ATS-optimised output, built with a sleek dark theme, animated type, and clear conversion CTAs.</p>
+        <p>An AI-powered resume builder landing page with ATS-optimised output — built with a sleek dark theme, animated type, and clear conversion CTAs.</p>
         <a href="https://smart-cv-builder-pro.vercel.app/pages/landing.html" target="_blank" class="project-link">
           Visit site <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
         </a>
@@ -512,7 +519,7 @@
           <span class="project-tag">Nairobi</span>
         </div>
         <h3>Skyline Treats</h3>
-        <p>Nairobi's favourite fast food brand, a bold dark landing page with golden accents, food photography grid, and an "Order Now" conversion flow.</p>
+        <p>Nairobi's favourite fast food brand — a bold dark landing page with golden accents, food photography grid, and an "Order Now" conversion flow.</p>
         <a href="https://skylinetreats.vercel.app/" target="_blank" class="project-link">
           Visit site <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
         </a>
@@ -547,7 +554,6 @@
         <div class="skill-track"><div class="skill-fill" style="width:78%"></div></div>
       </div>
     </div>
-
     <div class="skills-cards">
       <div class="skill-card">
         <h4>UI/UX Design</h4>
@@ -576,13 +582,10 @@
   <div class="testimonials-grid">
     <div class="testimonial-card">
       <span class="quote-icon">"</span>
-      <p>Telvin delivered an outstanding product that exceeded our expectations. The attention to detail and creative approach was remarkable, truly a 10/10 experience.</p>
+      <p>Telvin delivered an outstanding product that exceeded our expectations. The attention to detail and creative approach was remarkable — truly a 10/10 experience.</p>
       <div class="testimonial-author">
         <div class="author-avatar">JS</div>
-        <div class="author-info">
-          <h5>Denis Ogeto</h5>
-          <span>Founder, TimesNet Solutions</span>
-        </div>
+        <div class="author-info"><h5>John Smith</h5><span>CEO, Tech Corp</span></div>
       </div>
     </div>
     <div class="testimonial-card">
@@ -590,10 +593,7 @@
       <p>Working with Telvin was a pleasure. Professional, creative, and always willing to go the extra mile to ensure perfection. Highly recommended!</p>
       <div class="testimonial-author">
         <div class="author-avatar" style="background:linear-gradient(135deg,#7c3aed,#a78bfa);">SJ</div>
-        <div class="author-info">
-          <h5>Jackton Juma</h5>
-          <span>Co-Founder TimesNet Solutions</span>
-        </div>
+        <div class="author-info"><h5>Sarah Johnson</h5><span>Founder, StartupXYZ</span></div>
       </div>
     </div>
     <div class="testimonial-card">
@@ -601,10 +601,7 @@
       <p>The design work was exceptional and the project was delivered on time. Highly recommend Telvin for any design or development needs.</p>
       <div class="testimonial-author">
         <div class="author-avatar" style="background:linear-gradient(135deg,#059669,#34d399);">MC</div>
-        <div class="author-info">
-          <h5>Michael Chen</h5>
-          <span>Director, Design Studio</span>
-        </div>
+        <div class="author-info"><h5>Michael Chen</h5><span>Director, Design Studio</span></div>
       </div>
     </div>
   </div>
@@ -637,14 +634,23 @@
         </div>
       </div>
     </div>
+
     <div class="contact-form">
       <div class="form-row">
-        <div class="form-group"><input type="text" placeholder="Your Name" /></div>
-        <div class="form-group"><input type="email" placeholder="Your Email" /></div>
+        <div class="form-group">
+          <input type="text" id="name" placeholder="Your Name" />
+        </div>
+        <div class="form-group">
+          <input type="email" id="email" placeholder="Your Email" />
+        </div>
       </div>
-      <div class="form-group"><input type="text" placeholder="Subject" /></div>
-      <div class="form-group"><textarea placeholder="Your Message"></textarea></div>
-      <button class="btn-send">Send Message</button>
+      <div class="form-group">
+        <input type="text" id="subject" placeholder="Subject" />
+      </div>
+      <div class="form-group">
+        <textarea id="message" placeholder="Your Message"></textarea>
+      </div>
+      <button class="btn-send" id="send-btn" onclick="sendMessage()">Send Message</button>
     </div>
   </div>
 </section>
@@ -657,6 +663,60 @@
     <a href="https://www.behance.net/telvinmurimi" target="_blank" style="color:#6b7280;font-size:0.82rem;text-decoration:none;">Behance</a>
   </div>
 </footer>
+
+<script>
+  emailjs.init("zaBXH6odkf0ajCDyG");
+
+  function showToast(message, type) {
+    var toast = document.getElementById("toast");
+    toast.textContent = message;
+    toast.className = "toast " + type + " show";
+    setTimeout(function() {
+      toast.className = "toast";
+    }, 4000);
+  }
+
+  function sendMessage() {
+    var name = document.getElementById("name").value.trim();
+    var email = document.getElementById("email").value.trim();
+    var subject = document.getElementById("subject").value.trim();
+    var message = document.getElementById("message").value.trim();
+    var btn = document.getElementById("send-btn");
+
+    if (!name || !email || !subject || !message) {
+      showToast("Please fill in all fields.", "error");
+      return;
+    }
+
+    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      showToast("Please enter a valid email address.", "error");
+      return;
+    }
+
+    btn.disabled = true;
+    btn.textContent = "Sending...";
+
+    emailjs.send("service_8l9wruo", "template_ans52fq", {
+      name: name,
+      email: email,
+      title: subject,
+      message: message
+    }).then(function() {
+      showToast("Message sent! I'll get back to you soon.", "success");
+      document.getElementById("name").value = "";
+      document.getElementById("email").value = "";
+      document.getElementById("subject").value = "";
+      document.getElementById("message").value = "";
+      btn.disabled = false;
+      btn.textContent = "Send Message";
+    }).catch(function() {
+      showToast("Something went wrong. Please try again.", "error");
+      btn.disabled = false;
+      btn.textContent = "Send Message";
+    });
+  }
+</script>
 
 </body>
 </html>
