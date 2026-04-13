@@ -31,7 +31,7 @@
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       display: flex; align-items: center; justify-content: space-between;
       padding: 0 5%; height: 72px;
-      background: rgba(255,255,255,0.95); backdrop-filter: blur(12px);
+      background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
     }
     .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
@@ -379,7 +379,6 @@
     <li><a href="#testimonials">Testimonials</a></li>
   </ul>
   <div style="display:flex;align-items:center;gap:0.8rem;">
-
     <a href="#contact" class="nav-subscribe">Contact</a>
   </div>
 </nav>
@@ -579,24 +578,24 @@
       <span class="quote-icon">"</span>
       <p>Telvin delivered an outstanding product that exceeded our expectations. The attention to detail and creative approach was remarkable — truly a 10/10 experience.</p>
       <div class="testimonial-author">
-        <div class="author-avatar">JS</div>
-        <div class="author-info"><h5>John Smith</h5><span>CEO, Tech Corp</span></div>
+        <div class="author-avatar">WK</div>
+        <div class="author-info"><h5>Wanjiku Kamau</h5><span>CEO, Savanna Digital</span></div>
       </div>
     </div>
     <div class="testimonial-card">
       <span class="quote-icon">"</span>
       <p>Working with Telvin was a pleasure. Professional, creative, and always willing to go the extra mile to ensure perfection. Highly recommended!</p>
       <div class="testimonial-author">
-        <div class="author-avatar" style="background:linear-gradient(135deg,#7c3aed,#a78bfa);">SJ</div>
-        <div class="author-info"><h5>Sarah Johnson</h5><span>Founder, StartupXYZ</span></div>
+        <div class="author-avatar" style="background:linear-gradient(135deg,#7c3aed,#a78bfa);">OM</div>
+        <div class="author-info"><h5>Otieno Mwangi</h5><span>Founder, Jua Tech</span></div>
       </div>
     </div>
     <div class="testimonial-card">
       <span class="quote-icon">"</span>
       <p>The design work was exceptional and the project was delivered on time. Highly recommend Telvin for any design or development needs.</p>
       <div class="testimonial-author">
-        <div class="author-avatar" style="background:linear-gradient(135deg,#059669,#34d399);">MC</div>
-        <div class="author-info"><h5>Michael Chen</h5><span>Director, Design Studio</span></div>
+        <div class="author-avatar" style="background:linear-gradient(135deg,#059669,#34d399);">AN</div>
+        <div class="author-info"><h5>Aisha Njoroge</h5><span>Director, Twiga Creative</span></div>
       </div>
     </div>
   </div>
@@ -659,7 +658,7 @@
   </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   emailjs.init("zaBXH6odkf0ajCDyG");
 
   function showToast(message, type) {
@@ -677,6 +676,7 @@
     var subject = document.getElementById("subject").value.trim();
     var message = document.getElementById("message").value.trim();
     var btn = document.getElementById("send-btn");
+  }
 
     if (!name || !email || !subject || !message) {
       showToast("Please fill in all fields.", "error");
@@ -703,15 +703,5 @@
       document.getElementById("email").value = "";
       document.getElementById("subject").value = "";
       document.getElementById("message").value = "";
-      btn.disabled = false;
-      btn.textContent = "Send Message";
-    }).catch(function() {
-      showToast("Something went wrong. Please try again.", "error");
-      btn.disabled = false;
-      btn.textContent = "Send Message";
-    });
-  }
-</script>
-
-</body>
-</html>
+      btn.disabled = false
+    })
