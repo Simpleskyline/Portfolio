@@ -676,7 +676,6 @@
     var subject = document.getElementById("subject").value.trim();
     var message = document.getElementById("message").value.trim();
     var btn = document.getElementById("send-btn");
-  }
 
     if (!name || !email || !subject || !message) {
       showToast("Please fill in all fields.", "error");
@@ -703,5 +702,6 @@
       document.getElementById("email").value = "";
       document.getElementById("subject").value = "";
       document.getElementById("message").value = "";
-      btn.disabled = false
+      btn.disabled = false;
     })
+  }
