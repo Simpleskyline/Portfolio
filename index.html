@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Telvin Murimi — Developer & Designer</title>
+    <title>Telvin Murimi Developer & Designer</title>
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
@@ -12,16 +12,19 @@
       href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,700;12..96,800;12..96,900&family=Geist:wght@300;400;500;600&display=swap"
       rel="stylesheet"
     />
-    <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-T9XH39FZHJ"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-T9XH39FZHJ');
-  </script>
-
-  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-T9XH39FZHJ"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-T9XH39FZHJ");
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <style>
       *,
       *::before,
@@ -30,23 +33,21 @@
         padding: 0;
         box-sizing: border-box;
       }
-
       :root {
         --purple: #7c3aed;
-        --purple-light: #a78bfa;
-        --purple-glow: rgba(124, 58, 237, 0.25);
-        --bg: #0d0d0d;
-        --bg2: #141414;
-        --bg3: #1a1a1a;
-        --card: #1e1e1e;
-        --border: #2a2a2a;
-        --border-hover: #3d3d3d;
-        --text: #f4f4f5;
-        --text-muted: #a1a1aa;
-        --text-dim: #71717a;
-        --green: #22c55e;
+        --purple-light: #6d28d9;
+        --purple-glow: rgba(124, 58, 237, 0.12);
+        --bg: #ffffff;
+        --bg2: #f7f6f4;
+        --bg3: #eeebe6;
+        --card: #ffffff;
+        --border: #e4e0d8;
+        --border-hover: #c8c2b6;
+        --text: #18160f;
+        --text-muted: #6b6259;
+        --text-dim: #9c9086;
+        --green: #16a34a;
       }
-
       html {
         scroll-behavior: smooth;
         font-size: 16px;
@@ -57,39 +58,31 @@
         color: var(--text);
         overflow-x: hidden;
         -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
         font-size: 1.0625rem;
         line-height: 1.78;
         font-weight: 400;
         letter-spacing: 0.012em;
       }
 
-      /* NOISE TEXTURE OVERLAY */
-      body::before {
-        content: "";
-        position: fixed;
-        inset: 0;
-        z-index: 0;
-        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
-        pointer-events: none;
-        opacity: 0.4;
-      }
-
       /* NAV */
       nav {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
+        top: 14px;
+        left: 50%;
+        transform: translateX(-50%);
         z-index: 100;
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 0 5%;
-        height: 70px;
-        background: rgba(13, 13, 13, 0.9);
-        backdrop-filter: blur(20px);
-        border-bottom: 1px solid var(--border);
+        padding: 0 1.5rem;
+        height: 56px;
+        width: min(860px, 90vw);
+        background: rgba(255, 255, 255, 0.82);
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+        border: 1px solid rgba(124, 58, 237, 0.13);
+        border-radius: 50px;
+        box-shadow: 0 4px 28px rgba(0, 0, 0, 0.08);
       }
       .nav-logo {
         display: flex;
@@ -166,8 +159,6 @@
         background: #6d28d9;
         transform: translateY(-1px);
       }
-
-      /* HAMBURGER */
       .hamburger {
         display: none;
         flex-direction: column;
@@ -186,7 +177,7 @@
       .mobile-menu {
         display: none;
         position: fixed;
-        top: 70px;
+        top: 80px;
         left: 0;
         right: 0;
         background: var(--bg2);
@@ -211,7 +202,7 @@
         min-height: 100vh;
         display: flex;
         align-items: center;
-        padding: 70px 5% 0;
+        padding: 96px 5% 0;
         position: relative;
         overflow: hidden;
       }
@@ -348,125 +339,204 @@
         color: var(--purple-light);
       }
 
-      /* HERO DASHBOARD MOCKUP */
+      /* HERO VISUAL — ORBIT */
       .hero-visual {
         flex-shrink: 0;
         position: relative;
       }
-      .dashboard-card {
-        background: var(--card);
-        border: 1px solid var(--border);
-        border-radius: 18px;
-        padding: 1.5rem;
-        width: 340px;
-        box-shadow:
-          0 40px 80px rgba(0, 0, 0, 0.5),
-          0 0 0 1px var(--border);
+      .orbit-container {
+        width: 360px;
+        height: 360px;
+        position: relative;
+        flex-shrink: 0;
       }
-      .dash-titlebar {
+      .orbit-center {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 80px;
+        height: 80px;
+        border-radius: 20px;
+        background: var(--card);
+        border: 2px solid var(--purple);
         display: flex;
         align-items: center;
-        gap: 8px;
-        margin-bottom: 1.2rem;
-      }
-      .dash-dot {
-        width: 11px;
-        height: 11px;
-        border-radius: 50%;
-      }
-      .dash-dot.red {
-        background: #ef4444;
-      }
-      .dash-dot.yellow {
-        background: #f59e0b;
-      }
-      .dash-dot.green {
-        background: #22c55e;
-      }
-      .dash-title {
-        font-family: "Bricolage Grotesque", sans-serif;
-        font-weight: 800;
-        font-size: 1rem;
-        color: var(--text);
-        margin-left: 4px;
-      }
-      .dash-stats {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 0.5rem;
-        margin-bottom: 1.2rem;
-      }
-      .dash-stat {
-        text-align: center;
-        padding: 0.7rem 0.4rem;
-        background: var(--bg3);
-        border-radius: 10px;
-      }
-      .dash-stat-label {
-        font-size: 0.7rem;
-        color: var(--text-muted);
-        font-weight: 500;
-        margin-bottom: 0.3rem;
-      }
-      .dash-stat-val {
+        justify-content: center;
+        box-shadow: 0 0 40px rgba(124, 58, 237, 0.18);
+        z-index: 10;
         font-family: "Bricolage Grotesque", sans-serif;
         font-weight: 900;
         font-size: 1.1rem;
-        color: var(--text);
+        color: var(--purple);
+        letter-spacing: -1px;
       }
-      .dash-stat-val.purple {
-        color: var(--purple-light);
+      .orbit-ring {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        border-radius: 50%;
+        border: 1px dashed rgba(124, 58, 237, 0.15);
+        transform-origin: center center;
       }
-      .dash-progress-label {
-        font-size: 0.75rem;
-        color: var(--text-muted);
-        margin-bottom: 0.5rem;
+      .orbit-ring-1 {
+        width: 180px;
+        height: 180px;
+        margin-top: -90px;
+        margin-left: -90px;
+        animation: spin-cw 18s linear infinite;
       }
-      .dash-track {
-        height: 6px;
-        background: var(--bg3);
-        border-radius: 6px;
-        overflow: hidden;
+      .orbit-ring-2 {
+        width: 280px;
+        height: 280px;
+        margin-top: -140px;
+        margin-left: -140px;
+        animation: spin-ccw 28s linear infinite;
       }
-      .dash-fill {
-        height: 100%;
-        width: 82%;
-        border-radius: 6px;
-        background: linear-gradient(90deg, var(--purple), var(--purple-light));
+      .orbit-ring-3 {
+        width: 360px;
+        height: 360px;
+        margin-top: -180px;
+        margin-left: -180px;
+        animation: spin-cw 40s linear infinite;
       }
-      .dash-projects {
-        margin-top: 1.2rem;
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
+      @keyframes spin-cw {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
       }
-      .dash-proj-item {
+      @keyframes spin-ccw {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(-360deg);
+        }
+      }
+
+      .tech-logo {
+        position: absolute;
+        width: 48px;
+        height: 48px;
+        border-radius: 12px;
+        background: var(--card);
+        border: 1px solid var(--border);
         display: flex;
         align-items: center;
-        gap: 10px;
-        padding: 0.55rem 0.7rem;
-        background: var(--bg3);
-        border-radius: 8px;
-      }
-      .dash-proj-dot {
-        width: 7px;
-        height: 7px;
-        border-radius: 50%;
-        flex-shrink: 0;
-      }
-      .dash-proj-name {
-        font-size: 0.78rem;
-        font-weight: 500;
+        justify-content: center;
+        font-size: 0.72rem;
+        font-weight: 700;
         color: var(--text-muted);
-        flex: 1;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+        transition:
+          box-shadow 0.3s,
+          border-color 0.3s;
+        cursor: default;
+        white-space: nowrap;
+        line-height: 1.2;
+        text-align: center;
+        flex-direction: column;
+        gap: 2px;
       }
-      .dash-proj-tag {
-        font-size: 0.68rem;
-        color: var(--purple-light);
+      .tech-logo:hover {
+        box-shadow: 0 8px 24px rgba(124, 58, 237, 0.18);
+        border-color: var(--purple);
+      }
+      .tech-logo svg,
+      .tech-logo img {
+        width: 22px;
+        height: 22px;
+      }
+      /* Counter-rotate logos so text always stays upright */
+      .orbit-ring-1 .tech-logo {
+        animation: spin-ccw 18s linear infinite;
+      }
+      .orbit-ring-2 .tech-logo {
+        animation: spin-cw 28s linear infinite;
+      }
+      .orbit-ring-3 .tech-logo {
+        animation: spin-ccw 40s linear infinite;
+      }
+
+      /* Positions on ring: top center of ring */
+      .orbit-ring-1 .logo-pos-1 {
+        top: -24px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      .orbit-ring-1 .logo-pos-2 {
+        bottom: -24px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      .orbit-ring-1 .logo-pos-3 {
+        left: -24px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+
+      .orbit-ring-2 .logo-pos-1 {
+        top: -24px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      .orbit-ring-2 .logo-pos-2 {
+        bottom: -24px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      .orbit-ring-2 .logo-pos-3 {
+        left: -24px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+      .orbit-ring-2 .logo-pos-4 {
+        right: -24px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+
+      .orbit-ring-3 .logo-pos-1 {
+        top: -24px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      .orbit-ring-3 .logo-pos-2 {
+        bottom: -24px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      .orbit-ring-3 .logo-pos-3 {
+        left: -24px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+      .orbit-ring-3 .logo-pos-4 {
+        right: -24px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+      .orbit-ring-3 .logo-pos-5 {
+        top: 13%;
+        right: 13%;
+        transform: translate(0, 0);
+      }
+      .orbit-ring-3 .logo-pos-6 {
+        bottom: 13%;
+        left: 13%;
+      }
+
+      .tech-logo .logo-icon {
+        font-size: 1.1rem;
+        line-height: 1;
+      }
+      .tech-logo .logo-name {
+        font-size: 0.6rem;
         font-weight: 600;
-        background: rgba(124, 58, 237, 0.12);
-        padding: 0.15rem 0.5rem;
-        border-radius: 4px;
+        color: var(--text-dim);
       }
 
       /* STATS */
@@ -581,7 +651,7 @@
         line-height: 1.8;
       }
 
-      /* WHY US */
+      /* WHY */
       .why {
         background: var(--bg);
       }
@@ -631,112 +701,150 @@
       .projects-grid {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        gap: 2rem;
+        gap: 1.5rem;
       }
       .project-card {
-        border-radius: 20px;
+        border-radius: 24px;
         overflow: hidden;
         background: var(--card);
         border: 1px solid var(--border);
         transition:
-          transform 0.25s,
-          box-shadow 0.25s,
-          border-color 0.25s;
+          transform 0.3s,
+          box-shadow 0.3s;
         display: flex;
         flex-direction: column;
+        position: relative;
       }
       .project-card:hover {
-        transform: translateY(-6px);
-        box-shadow: 0 24px 60px rgba(124, 58, 237, 0.15);
-        border-color: var(--purple);
+        transform: translateY(-8px);
+        box-shadow: 0 32px 64px rgba(124, 58, 237, 0.13);
+      }
+      .project-card.featured {
+        grid-column: span 2;
+        flex-direction: row;
+      }
+      .project-card.featured .project-preview {
+        flex: 1.2;
+        height: auto;
+        min-height: 280px;
+      }
+      .project-card.featured .project-body {
+        flex: 1;
+        padding: 2.5rem 2rem;
+        justify-content: center;
       }
       .project-preview {
         position: relative;
-        height: 220px;
+        height: 240px;
         overflow: hidden;
-        background: #0a0a0a;
+        background: #f0eee9;
         cursor: pointer;
+        flex-shrink: 0;
       }
       .project-preview iframe {
-        width: 1440px;
-        height: 900px;
-        transform: scale(0.278);
+        width: 200%;
+        height: 480px;
+        transform: scale(0.5);
         transform-origin: top left;
         border: none;
         pointer-events: none;
         position: absolute;
         top: 0;
         left: 0;
+        transition: transform 0.6s ease;
+      }
+      .project-card:hover .project-preview iframe {
+        transform: scale(0.5) translateY(-20px);
       }
       .project-preview-overlay {
         position: absolute;
         inset: 0;
         background: linear-gradient(
           180deg,
-          transparent 40%,
-          rgba(0, 0, 0, 0.7) 100%
+          transparent 30%,
+          rgba(0, 0, 0, 0.55) 100%
         );
         opacity: 0;
-        transition: opacity 0.25s;
+        transition: opacity 0.3s;
         display: flex;
-        align-items: center;
-        justify-content: center;
+        align-items: flex-end;
+        justify-content: flex-start;
+        padding: 1.5rem;
       }
       .project-card:hover .project-preview-overlay {
         opacity: 1;
       }
       .preview-btn {
-        background: var(--purple);
-        color: #fff;
-        padding: 0.55rem 1.4rem;
+        background: #fff;
+        color: var(--purple);
+        padding: 0.5rem 1.2rem;
         border-radius: 50px;
-        font-size: 0.82rem;
+        font-size: 0.8rem;
         font-weight: 700;
         text-decoration: none;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+      }
+      .project-num {
+        position: absolute;
+        top: 1rem;
+        left: 1rem;
+        width: 32px;
+        height: 32px;
+        background: var(--purple);
+        color: #fff;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.75rem;
+        font-weight: 800;
+        font-family: "Bricolage Grotesque", sans-serif;
+        z-index: 2;
       }
       .project-body {
-        padding: 1.4rem 1.5rem 1.6rem;
+        padding: 1.6rem;
         display: flex;
         flex-direction: column;
         flex: 1;
       }
       .project-tag-row {
         display: flex;
-        gap: 0.5rem;
+        gap: 0.4rem;
         flex-wrap: wrap;
-        margin-bottom: 0.75rem;
+        margin-bottom: 0.8rem;
       }
       .project-tag {
-        background: rgba(124, 58, 237, 0.1);
-        color: var(--purple-light);
-        border: 1px solid rgba(124, 58, 237, 0.2);
-        font-size: 0.72rem;
-        font-weight: 700;
-        padding: 0.25rem 0.7rem;
+        background: var(--bg3);
+        color: var(--text-muted);
+        font-size: 0.7rem;
+        font-weight: 600;
+        padding: 0.2rem 0.65rem;
         border-radius: 50px;
+        letter-spacing: 0.02em;
       }
       .project-body h3 {
         font-family: "Bricolage Grotesque", sans-serif;
-        font-size: 1.25rem;
-        font-weight: 800;
+        font-size: 1.3rem;
+        font-weight: 900;
         color: var(--text);
         margin-bottom: 0.5rem;
-        letter-spacing: -0.4px;
+        letter-spacing: -0.5px;
+        line-height: 1.2;
       }
       .project-body p {
-        font-size: 0.9375rem;
+        font-size: 0.9rem;
         color: var(--text-muted);
-        line-height: 1.8;
-        margin-bottom: 1.2rem;
+        line-height: 1.75;
+        margin-bottom: 1.4rem;
         flex: 1;
       }
       .project-link {
         display: inline-flex;
         align-items: center;
         gap: 6px;
-        font-size: 0.83rem;
+        font-size: 0.82rem;
         font-weight: 700;
-        color: var(--purple-light);
+        color: var(--purple);
         text-decoration: none;
         transition: gap 0.2s;
       }
@@ -744,9 +852,275 @@
         gap: 10px;
       }
 
+      /* TECH STACK SECTION */
+      .tech-stack-section {
+        background: var(--bg);
+        padding: 6rem 5%;
+        overflow: hidden;
+        position: relative;
+      }
+      .tech-stack-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: radial-gradient(
+          ellipse at 70% 50%,
+          rgba(124, 58, 237, 0.05) 0%,
+          transparent 60%
+        );
+        pointer-events: none;
+      }
+      .tech-stack-inner {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 5rem;
+        align-items: center;
+      }
+      .tech-stack-text h2 {
+        font-family: "Bricolage Grotesque", sans-serif;
+        font-weight: 900;
+        font-size: clamp(2.2rem, 4vw, 3.2rem);
+        color: var(--text);
+        letter-spacing: -1.5px;
+        margin-bottom: 0.8rem;
+        line-height: 1.05;
+      }
+      .tech-stack-text p {
+        color: var(--text-muted);
+        font-size: 1.0625rem;
+        line-height: 1.85;
+        max-width: 440px;
+        margin-bottom: 2rem;
+      }
+      .tech-categories {
+        display: flex;
+        flex-direction: column;
+        gap: 0.6rem;
+      }
+      .tech-cat-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        border-radius: 50px;
+        padding: 0.4rem 1rem;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--text-muted);
+        transition: all 0.2s;
+        cursor: default;
+        width: fit-content;
+      }
+      .tech-cat-pill:hover {
+        border-color: var(--purple);
+        color: var(--purple);
+      }
+      .tech-cat-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+      }
+
+      /* BIG ORBIT (tech stack visual) */
+      .big-orbit-wrap {
+        position: relative;
+        width: 460px;
+        height: 460px;
+        margin: 0 auto;
+        animation: float-gentle 6s ease-in-out infinite;
+      }
+      @keyframes float-gentle {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-14px);
+        }
+      }
+
+      .big-orbit-center {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100px;
+        height: 100px;
+        border-radius: 24px;
+        background: linear-gradient(
+          135deg,
+          rgba(124, 58, 237, 0.15),
+          rgba(109, 40, 217, 0.08)
+        );
+        border: 1.5px solid rgba(124, 58, 237, 0.3);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 10;
+        box-shadow: 0 0 60px rgba(124, 58, 237, 0.12);
+      }
+      .big-orbit-center-text {
+        font-family: "Bricolage Grotesque", sans-serif;
+        font-weight: 900;
+        font-size: 0.85rem;
+        color: var(--purple);
+        text-align: center;
+        line-height: 1.2;
+      }
+
+      .big-ring {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        border-radius: 50%;
+        transform-origin: center center;
+        pointer-events: none;
+      }
+      .big-ring-1 {
+        width: 200px;
+        height: 200px;
+        margin-top: -100px;
+        margin-left: -100px;
+        border: 1px dashed rgba(124, 58, 237, 0.12);
+        animation: spin-cw 22s linear infinite;
+      }
+      .big-ring-2 {
+        width: 320px;
+        height: 320px;
+        margin-top: -160px;
+        margin-left: -160px;
+        border: 1px dashed rgba(124, 58, 237, 0.09);
+        animation: spin-ccw 32s linear infinite;
+      }
+      .big-ring-3 {
+        width: 440px;
+        height: 440px;
+        margin-top: -220px;
+        margin-left: -220px;
+        border: 1px dashed rgba(124, 58, 237, 0.06);
+        animation: spin-cw 46s linear infinite;
+      }
+
+      .big-tech-logo {
+        position: absolute;
+        width: 54px;
+        height: 54px;
+        border-radius: 14px;
+        background: var(--card);
+        border: 1px solid var(--border);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 3px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.07);
+        transition:
+          box-shadow 0.3s,
+          border-color 0.3s,
+          transform 0.3s;
+        cursor: default;
+      }
+      .big-tech-logo:hover {
+        box-shadow: 0 8px 30px rgba(124, 58, 237, 0.2);
+        border-color: var(--purple);
+        transform: scale(1.12);
+      }
+      .big-tech-logo .t-icon {
+        font-size: 1.25rem;
+        line-height: 1;
+      }
+      .big-tech-logo .t-name {
+        font-size: 0.58rem;
+        font-weight: 700;
+        color: var(--text-dim);
+        line-height: 1;
+      }
+
+      /* Ring 1: 3 logos */
+      .big-ring-1 .big-tech-logo {
+        animation: spin-ccw 22s linear infinite;
+      }
+      .big-ring-1 .bp-1 {
+        top: -27px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      .big-ring-1 .bp-2 {
+        bottom: -27px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      .big-ring-1 .bp-3 {
+        left: -27px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+
+      /* Ring 2: 4 logos */
+      .big-ring-2 .big-tech-logo {
+        animation: spin-cw 32s linear infinite;
+      }
+      .big-ring-2 .bp-1 {
+        top: -27px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      .big-ring-2 .bp-2 {
+        bottom: -27px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      .big-ring-2 .bp-3 {
+        left: -27px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+      .big-ring-2 .bp-4 {
+        right: -27px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+
+      /* Ring 3: 6 logos */
+      .big-ring-3 .big-tech-logo {
+        animation: spin-ccw 46s linear infinite;
+      }
+      .big-ring-3 .bp-1 {
+        top: -27px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      .big-ring-3 .bp-2 {
+        bottom: -27px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      .big-ring-3 .bp-3 {
+        left: -27px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+      .big-ring-3 .bp-4 {
+        right: -27px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+      .big-ring-3 .bp-5 {
+        top: 13%;
+        right: 10%;
+      }
+      .big-ring-3 .bp-6 {
+        bottom: 13%;
+        left: 10%;
+      }
+
       /* PROCESS */
       .process {
-        background: var(--bg);
+        background: var(--bg2);
       }
       .process-steps {
         display: grid;
@@ -808,7 +1182,7 @@
 
       /* SKILLS */
       .skills {
-        background: var(--bg2);
+        background: var(--bg);
       }
       .skills-layout {
         display: grid;
@@ -879,7 +1253,7 @@
 
       /* PRICING */
       .pricing {
-        background: var(--bg);
+        background: var(--bg2);
       }
       .pricing-grid {
         display: grid;
@@ -1043,7 +1417,7 @@
 
       /* TESTIMONIALS */
       .testimonials {
-        background: var(--bg2);
+        background: var(--bg);
       }
       .testimonials-grid {
         display: grid;
@@ -1108,7 +1482,7 @@
 
       /* CONTACT */
       .contact {
-        background: var(--bg);
+        background: var(--bg2);
       }
       .contact-layout {
         display: grid;
@@ -1338,6 +1712,20 @@
         .footer-grid {
           grid-template-columns: 1fr 1fr;
         }
+        .tech-stack-inner {
+          grid-template-columns: 1fr;
+          gap: 3rem;
+        }
+        .big-orbit-wrap {
+          width: 380px;
+          height: 380px;
+        }
+        .big-ring-3 {
+          width: 360px;
+          height: 360px;
+          margin-top: -180px;
+          margin-left: -180px;
+        }
       }
       @media (max-width: 768px) {
         .nav-links,
@@ -1352,7 +1740,7 @@
           padding-top: 2rem;
           gap: 3rem;
         }
-        .hero-visual {
+        .orbit-container {
           display: none;
         }
         .stats-bar {
@@ -1369,6 +1757,10 @@
         }
         .projects-grid {
           grid-template-columns: 1fr;
+        }
+        .project-card.featured {
+          grid-column: span 1;
+          flex-direction: column;
         }
         .skills-layout {
           grid-template-columns: 1fr;
@@ -1397,6 +1789,28 @@
         }
         .hero-text h1 {
           font-size: 2.6rem;
+        }
+        .big-orbit-wrap {
+          width: 300px;
+          height: 300px;
+        }
+        .big-ring-3 {
+          width: 280px;
+          height: 280px;
+          margin-top: -140px;
+          margin-left: -140px;
+        }
+        .big-ring-2 {
+          width: 200px;
+          height: 200px;
+          margin-top: -100px;
+          margin-left: -100px;
+        }
+        .big-ring-1 {
+          width: 130px;
+          height: 130px;
+          margin-top: -65px;
+          margin-left: -65px;
         }
       }
     </style>
@@ -1439,9 +1853,9 @@
             Available for projects
           </div>
           <h1>
-            Smart, reliable<br />
-            websites for<br />
-            <span class="accent">Kenyan businesses.</span>
+            Smart, reliable<br />websites for<br /><span class="accent"
+              >Kenyan businesses.</span
+            >
           </h1>
           <p>
             Struggling with an outdated site? Losing sales because customers
@@ -1465,45 +1879,66 @@
             <strong style="color: var(--text-muted)">Free Consultation</strong>
           </p>
         </div>
+        <!-- Small orbit in hero -->
         <div class="hero-visual">
-          <div class="dashboard-card">
-            <div class="dash-titlebar">
-              <div class="dash-dot red"></div>
-              <div class="dash-dot yellow"></div>
-              <div class="dash-dot green"></div>
-              <span class="dash-title">Project Dashboard</span>
-            </div>
-            <div class="dash-stats">
-              <div class="dash-stat">
-                <div class="dash-stat-label">Projects</div>
-                <div class="dash-stat-val">20+</div>
+          <div class="orbit-container">
+            <div class="orbit-center">TM</div>
+            <div class="orbit-ring orbit-ring-1">
+              <div class="tech-logo logo-pos-1">
+                <span class="logo-icon">⚛️</span
+                ><span class="logo-name">React</span>
               </div>
-              <div class="dash-stat">
-                <div class="dash-stat-label">Clients</div>
-                <div class="dash-stat-val">15+</div>
+              <div class="tech-logo logo-pos-2">
+                <span class="logo-icon">🐍</span
+                ><span class="logo-name">Python</span>
               </div>
-              <div class="dash-stat">
-                <div class="dash-stat-label">Growth</div>
-                <div class="dash-stat-val purple">3yrs</div>
+              <div class="tech-logo logo-pos-3">
+                <span class="logo-icon">🎨</span
+                ><span class="logo-name">Figma</span>
               </div>
             </div>
-            <div class="dash-progress-label">Client Satisfaction</div>
-            <div class="dash-track"><div class="dash-fill"></div></div>
-            <div class="dash-projects">
-              <div class="dash-proj-item">
-                <div class="dash-proj-dot" style="background: #22c55e"></div>
-                <span class="dash-proj-name">Tembo Tours</span>
-                <span class="dash-proj-tag">Live</span>
+            <div class="orbit-ring orbit-ring-2">
+              <div class="tech-logo logo-pos-1">
+                <span class="logo-icon">▲</span
+                ><span class="logo-name">Next.js</span>
               </div>
-              <div class="dash-proj-item">
-                <div class="dash-proj-dot" style="background: #a78bfa"></div>
-                <span class="dash-proj-name">SmartCV Builder</span>
-                <span class="dash-proj-tag">Live</span>
+              <div class="tech-logo logo-pos-2">
+                <span class="logo-icon">🐘</span
+                ><span class="logo-name">Django</span>
               </div>
-              <div class="dash-proj-item">
-                <div class="dash-proj-dot" style="background: #f59e0b"></div>
-                <span class="dash-proj-name">Skyline Treats</span>
-                <span class="dash-proj-tag">Live</span>
+              <div class="tech-logo logo-pos-3">
+                <span class="logo-icon">🐬</span
+                ><span class="logo-name">MySQL</span>
+              </div>
+              <div class="tech-logo logo-pos-4">
+                <span class="logo-icon">☁️</span
+                ><span class="logo-name">Vercel</span>
+              </div>
+            </div>
+            <div class="orbit-ring orbit-ring-3">
+              <div class="tech-logo logo-pos-1">
+                <span class="logo-icon">🟨</span
+                ><span class="logo-name">JS</span>
+              </div>
+              <div class="tech-logo logo-pos-2">
+                <span class="logo-icon">💠</span
+                ><span class="logo-name">CSS</span>
+              </div>
+              <div class="tech-logo logo-pos-3">
+                <span class="logo-icon">🐙</span
+                ><span class="logo-name">GitHub</span>
+              </div>
+              <div class="tech-logo logo-pos-4">
+                <span class="logo-icon">🔥</span
+                ><span class="logo-name">Firebase</span>
+              </div>
+              <div class="tech-logo logo-pos-5">
+                <span class="logo-icon">🟦</span
+                ><span class="logo-name">TS</span>
+              </div>
+              <div class="tech-logo logo-pos-6">
+                <span class="logo-icon">🌿</span
+                ><span class="logo-name">MongoDB</span>
               </div>
             </div>
           </div>
@@ -1542,7 +1977,7 @@
       </div>
       <div class="services-grid">
         <div class="service-card">
-          <div class="service-icon">&#128188;</div>
+          <div class="service-icon">💼</div>
           <h3>Business Websites</h3>
           <p>
             Clean, fast, mobile-first websites that make your brand stand out
@@ -1550,15 +1985,15 @@
           </p>
         </div>
         <div class="service-card">
-          <div class="service-icon">&#128722;</div>
+          <div class="service-icon">🛒</div>
           <h3>E-Commerce Stores</h3>
           <p>
-            Online shops with secure payments — M-Pesa & cards — so you can sell
+            Online shops with secure payments M-Pesa & cards so you can sell
             24/7 without limits.
           </p>
         </div>
         <div class="service-card">
-          <div class="service-icon">&#128295;</div>
+          <div class="service-icon">🔧</div>
           <h3>Custom Web Apps</h3>
           <p>
             Tailored solutions for bookings, portals, dashboards, and unique
@@ -1566,7 +2001,7 @@
           </p>
         </div>
         <div class="service-card">
-          <div class="service-icon">&#128737;</div>
+          <div class="service-icon">🛡️</div>
           <h3>Website Care & Support</h3>
           <p>
             Ongoing updates, security monitoring, and improvements after your
@@ -1587,19 +2022,19 @@
       </div>
       <div class="why-grid">
         <div class="why-card">
-          <div class="why-icon">&#9889;</div>
+          <div class="why-icon">⚡</div>
           <h3>Lightning Fast Delivery</h3>
         </div>
         <div class="why-card">
-          <div class="why-icon">&#128737;</div>
+          <div class="why-icon">🛡️</div>
           <h3>Bank-Grade Security</h3>
         </div>
         <div class="why-card">
-          <div class="why-icon">&#10084;</div>
+          <div class="why-icon">❤️</div>
           <h3>Built For You</h3>
         </div>
         <div class="why-card">
-          <div class="why-icon">&#128640;</div>
+          <div class="why-icon">🚀</div>
           <h3>Scalable Solutions</h3>
         </div>
       </div>
@@ -1614,8 +2049,9 @@
         </p>
       </div>
       <div class="projects-grid">
-        <div class="project-card">
+        <div class="project-card featured">
           <div class="project-preview">
+            <div class="project-num">01</div>
             <iframe
               src="https://tembotours-one.vercel.app/"
               loading="lazy"
@@ -1627,19 +2063,19 @@
                 href="https://tembotours-one.vercel.app/"
                 target="_blank"
                 class="preview-btn"
-                >View Live &#8599;</a
+                >View Live ↗</a
               >
             </div>
           </div>
           <div class="project-body">
             <div class="project-tag-row">
-              <span class="project-tag">Landing Page</span>
-              <span class="project-tag">Safari & Tours</span>
-              <span class="project-tag">Next.js</span>
+              <span class="project-tag">Landing Page</span
+              ><span class="project-tag">Safari & Tours</span
+              ><span class="project-tag">Next.js</span>
             </div>
             <h3>Tembo Tours</h3>
             <p>
-              Kenya's premier safari company landing page — featuring cinematic
+              Kenya's premier safari company landing page featuring cinematic
               hero imagery, tour packages, and booking flows for the Maasai Mara
               and beyond.
             </p>
@@ -1647,13 +2083,13 @@
               href="https://tembotours-one.vercel.app/"
               target="_blank"
               class="project-link"
-              >Visit site &#8594;</a
+              >Visit site →</a
             >
           </div>
         </div>
-
         <div class="project-card">
           <div class="project-preview">
+            <div class="project-num">02</div>
             <iframe
               src="https://smart-cv-builder-pro.vercel.app/pages/landing.html"
               loading="lazy"
@@ -1665,15 +2101,15 @@
                 href="https://smart-cv-builder-pro.vercel.app/pages/landing.html"
                 target="_blank"
                 class="preview-btn"
-                >View Live &#8599;</a
+                >View Live ↗</a
               >
             </div>
           </div>
           <div class="project-body">
             <div class="project-tag-row">
-              <span class="project-tag">SaaS Landing</span>
-              <span class="project-tag">AI Product</span>
-              <span class="project-tag">Dark UI</span>
+              <span class="project-tag">SaaS Landing</span
+              ><span class="project-tag">AI Product</span
+              ><span class="project-tag">Dark UI</span>
             </div>
             <h3>SmartCV Builder</h3>
             <p>
@@ -1685,13 +2121,13 @@
               href="https://smart-cv-builder-pro.vercel.app/pages/landing.html"
               target="_blank"
               class="project-link"
-              >Visit site &#8594;</a
+              >Visit site →</a
             >
           </div>
         </div>
-
         <div class="project-card">
           <div class="project-preview">
+            <div class="project-num">03</div>
             <iframe
               src="https://skylinetreats.vercel.app/"
               loading="lazy"
@@ -1703,15 +2139,15 @@
                 href="https://skylinetreats.vercel.app/"
                 target="_blank"
                 class="preview-btn"
-                >View Live &#8599;</a
+                >View Live ↗</a
               >
             </div>
           </div>
           <div class="project-body">
             <div class="project-tag-row">
-              <span class="project-tag">Food & Beverage</span>
-              <span class="project-tag">E-Commerce</span>
-              <span class="project-tag">Nairobi</span>
+              <span class="project-tag">Food & Beverage</span
+              ><span class="project-tag">E-Commerce</span
+              ><span class="project-tag">Nairobi</span>
             </div>
             <h3>Skyline Treats</h3>
             <p>
@@ -1723,13 +2159,13 @@
               href="https://skylinetreats.vercel.app/"
               target="_blank"
               class="project-link"
-              >Visit site &#8594;</a
+              >Visit site →</a
             >
           </div>
         </div>
-
         <div class="project-card">
           <div class="project-preview">
+            <div class="project-num">04</div>
             <iframe
               src="https://business-card-generator-three.vercel.app/"
               loading="lazy"
@@ -1741,28 +2177,118 @@
                 href="https://business-card-generator-three.vercel.app/"
                 target="_blank"
                 class="preview-btn"
-                >View Live &#8599;</a
+                >View Live ↗</a
               >
             </div>
           </div>
           <div class="project-body">
             <div class="project-tag-row">
-              <span class="project-tag">React</span>
-              <span class="project-tag">Tailwind CSS</span>
-              <span class="project-tag">Tool</span>
+              <span class="project-tag">React</span
+              ><span class="project-tag">Tailwind CSS</span
+              ><span class="project-tag">Tool</span>
             </div>
             <h3>Business Card Generator</h3>
             <p>
               Fill in your details and get a live preview that updates as you
               type — then download a high-resolution PNG business card
-              instantly. Built with React and html2canvas.
+              instantly.
             </p>
             <a
               href="https://business-card-generator-three.vercel.app/"
               target="_blank"
               class="project-link"
-              >Visit site &#8594;</a
+              >Visit site →</a
             >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TECH STACK SECTION (Big Orbit) -->
+    <section class="tech-stack-section" id="skills">
+      <div class="tech-stack-inner">
+        <div class="tech-stack-text">
+          <h2 class="section-title">Built With The Best Stack</h2>
+          <p>
+            From pixel-perfect frontend to robust backends — I work across the
+            full spectrum of modern web technologies to deliver fast, scalable,
+            production-ready solutions.
+          </p>
+          <div class="tech-categories">
+            <div class="tech-cat-pill">
+              <span class="tech-cat-dot" style="background: #61dafb"></span
+              >Frontend — React, Next.js, TypeScript, Tailwind
+            </div>
+            <div class="tech-cat-pill">
+              <span class="tech-cat-dot" style="background: #3776ab"></span
+              >Backend — Django, Node.js, REST APIs
+            </div>
+            <div class="tech-cat-pill">
+              <span class="tech-cat-dot" style="background: #47a248"></span
+              >Database — MongoDB, PostgreSQL, Firebase
+            </div>
+            <div class="tech-cat-pill">
+              <span class="tech-cat-dot" style="background: #7c3aed"></span
+              >Tools — Figma, Git, Vercel, Supabase
+            </div>
+          </div>
+        </div>
+        <div class="big-orbit-wrap">
+          <div class="big-orbit-center">
+            <div class="big-orbit-center-text">Full<br />Stack</div>
+          </div>
+
+          <!-- Ring 1 -->
+          <div class="big-ring big-ring-1">
+            <div class="big-tech-logo bp-1">
+              <span class="t-icon">⚛️</span><span class="t-name">React</span>
+            </div>
+            <div class="big-tech-logo bp-2">
+              <span class="t-icon">🐍</span><span class="t-name">Python</span>
+            </div>
+            <div class="big-tech-logo bp-3">
+              <span class="t-icon">🟦</span
+              ><span class="t-name">TypeScript</span>
+            </div>
+          </div>
+
+          <!-- Ring 2 -->
+          <div class="big-ring big-ring-2">
+            <div class="big-tech-logo bp-1">
+              <span class="t-icon">▲</span><span class="t-name">Next.js</span>
+            </div>
+            <div class="big-tech-logo bp-2">
+              <span class="t-icon">🌿</span><span class="t-name">MongoDB</span>
+            </div>
+            <div class="big-tech-logo bp-3">
+              <span class="t-icon">🎨</span><span class="t-name">Figma</span>
+            </div>
+            <div class="big-tech-logo bp-4">
+              <span class="t-icon">☁️</span><span class="t-name">Vercel</span>
+            </div>
+          </div>
+
+          <!-- Ring 3 -->
+          <div class="big-ring big-ring-3">
+            <div class="big-tech-logo bp-1">
+              <span class="t-icon">🐘</span><span class="t-name">Django</span>
+            </div>
+            <div class="big-tech-logo bp-2">
+              <span class="t-icon">🔥</span><span class="t-name">Firebase</span>
+            </div>
+            <div class="big-tech-logo bp-3">
+              <span class="t-icon">🐙</span><span class="t-name">GitHub</span>
+            </div>
+            <div class="big-tech-logo bp-4">
+              <span class="t-icon">🐬</span><span class="t-name">MySQL</span>
+            </div>
+            <div class="big-tech-logo bp-5">
+              <span class="t-icon">💠</span><span class="t-name">CSS</span>
+            </div>
+            <div class="big-tech-logo bp-6">
+              <span class="t-icon">🟨</span
+              ><span class="t-name">JavaScript</span>
+            </div>
           </div>
         </div>
       </div>
@@ -1779,22 +2305,22 @@
       </div>
       <div class="process-steps">
         <div class="process-step">
-          <div class="step-icon">&#128222;</div>
+          <div class="step-icon">📞</div>
           <h3>1. Discovery Call</h3>
         </div>
         <div class="process-step">
-          <div class="step-icon">&#128196;</div>
+          <div class="step-icon">📄</div>
           <h3>2. Proposal & MVP</h3>
         </div>
         <div class="process-step">
-          <div class="step-icon">&#128640;</div>
+          <div class="step-icon">🚀</div>
           <h3>3. Delivery & Support</h3>
         </div>
       </div>
     </section>
 
-    <!-- SKILLS -->
-    <section class="skills" id="skills">
+    <!-- SKILLS BARS -->
+    <section style="background: var(--bg); padding: 6rem 5%">
       <div class="skills-layout">
         <div>
           <h2 class="section-title">What My Skills Include</h2>
@@ -1885,9 +2411,7 @@
           Packages designed for Kenyan SMEs — no hidden fees, no back-and-forth.
         </p>
       </div>
-
       <div class="pricing-grid">
-        <!-- Starter -->
         <div class="pricing-card">
           <h3>Starter</h3>
           <p class="plan-desc">
@@ -1896,20 +2420,16 @@
           <div class="price"><span class="currency">KES </span>30,000</div>
           <p class="price-note">one-time payment</p>
           <ul class="pricing-features">
-            <li>
-              5 Page Custom Website (Home, About, Services, Blog, Contact)
-            </li>
+            <li>5 Page Custom Website</li>
             <li>Mobile Responsive Design</li>
-            <li>Contact Form & Basic SEO Setup</li>
+            <li>Contact Form & Basic SEO</li>
             <li>Social Media Integration</li>
             <li>Basic Security Setup</li>
-            <li>1 Month Maintenance & Support</li>
+            <li>1 Month Support</li>
             <li>2 Free Revisions</li>
           </ul>
           <a href="#contact" class="pricing-btn">Get Quote</a>
         </div>
-
-        <!-- Business (featured) -->
         <div class="pricing-card featured">
           <div class="pricing-badge">Most Popular</div>
           <h3>Business</h3>
@@ -1922,18 +2442,16 @@
             <li>Everything in Starter</li>
             <li>Up to 10 Pages with Blog</li>
             <li>CMS Integration</li>
-            <li>Advanced SEO & Analytics Setup</li>
-            <li>Social Media & Marketing Tools</li>
-            <li>Enhanced Security Features</li>
-            <li>3 Months Maintenance & Support</li>
+            <li>Advanced SEO & Analytics</li>
+            <li>Marketing Tools</li>
+            <li>Enhanced Security</li>
+            <li>3 Months Support</li>
             <li>10 Free Revisions</li>
           </ul>
           <a href="#contact" class="pricing-btn featured-btn">Get Quote</a>
         </div>
-
-        <!-- Scale -->
         <div class="pricing-card">
-          <!-- <h3>Scale</h3> -->
+          <h3>Scale</h3>
           <p class="plan-desc">
             Comprehensive solution for businesses needing e-commerce & payments.
           </p>
@@ -1941,19 +2459,17 @@
           <p class="price-note">one-time payment</p>
           <ul class="pricing-features">
             <li>Everything in Business</li>
-            <li>Full E-Commerce Store (Unlimited Products)</li>
-            <li>M-Pesa & Card Payments Integration</li>
-            <li>Advanced Marketing & Automation Tools</li>
-            <li>CRM Integration & Customer Management</li>
-            <li>Premium Security & Backup System</li>
+            <li>Full E-Commerce Store</li>
+            <li>M-Pesa & Card Payments</li>
+            <li>Advanced Marketing & Automation</li>
+            <li>CRM Integration</li>
+            <li>Premium Security & Backup</li>
             <li>1 Year Priority Support</li>
             <li>Unlimited Revisions</li>
           </ul>
           <a href="#contact" class="pricing-btn">Get Quote</a>
         </div>
       </div>
-
-      <!-- Full pricing table -->
       <div style="margin-top: 3rem">
         <h3
           style="
@@ -2015,7 +2531,7 @@
                 <td>Maintenance</td>
                 <td>3,000 – 15,000/mo</td>
                 <td style="color: var(--text-muted); font-weight: 400">
-                  Regular updates, Bug fixes, Backups & uptime monitoring
+                  Regular updates, Bug fixes, Backups & monitoring
                 </td>
               </tr>
               <tr>
@@ -2104,32 +2620,30 @@
             life. Fill out the form or reach out directly via WhatsApp.
           </p>
           <div class="contact-item">
-            <div class="contact-icon">&#9993;</div>
+            <div class="contact-icon">✉️</div>
             <div class="contact-item-text">
-              <label>Email</label>
-              <a href="mailto:skylinecodes96@gmail.com"
+              <label>Email</label
+              ><a href="mailto:skylinecodes96@gmail.com"
                 >skylinecodes96@gmail.com</a
               >
             </div>
           </div>
           <div class="contact-item">
-            <div class="contact-icon">&#128241;</div>
+            <div class="contact-icon">📱</div>
             <div class="contact-item-text">
-              <label>WhatsApp</label>
-              <a href="https://wa.me/254796560921" target="_blank"
+              <label>WhatsApp</label
+              ><a href="https://wa.me/254796560921" target="_blank"
                 >+254 796 560 921</a
               >
             </div>
           </div>
           <div class="contact-item">
-            <div class="contact-icon">&#128205;</div>
+            <div class="contact-icon">📍</div>
             <div class="contact-item-text">
-              <label>Location</label>
-              <span>Nairobi, Kenya</span>
+              <label>Location</label><span>Nairobi, Kenya</span>
             </div>
           </div>
         </div>
-
         <div class="contact-form">
           <div class="form-row">
             <div class="form-group">
@@ -2174,6 +2688,7 @@
                 flex: 1;
                 background: var(--card);
                 border: 1px solid var(--border-hover);
+                color: var(--text);
               "
             >
               Send via Email
@@ -2208,16 +2723,13 @@
         </div>
         <div class="footer-col">
           <h4>Quick Links</h4>
-          <a href="#services">Services</a>
-          <a href="#work">Work</a>
-          <a href="#about">About</a>
-          <a href="#process">Process</a>
-          <a href="#pricing">Pricing</a>
+          <a href="#services">Services</a><a href="#work">Work</a
+          ><a href="#about">About</a><a href="#process">Process</a
+          ><a href="#pricing">Pricing</a>
         </div>
         <div class="footer-col">
           <h4>Legal</h4>
-          <a href="#">Privacy Policy</a>
-          <a href="#">Terms of Service</a>
+          <a href="#">Privacy Policy</a><a href="#">Terms of Service</a>
         </div>
         <div class="footer-col">
           <h4>Contact</h4>
@@ -2242,27 +2754,20 @@
 
     <div class="toast" id="toast"></div>
 
-    <script
-      data-cfasync="false"
-      src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"
-    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script>
       emailjs.init("zaBXH6odkf0ajCDyG");
-
       function toggleMenu() {
-        var menu = document.getElementById("mobileMenu");
-        menu.classList.toggle("open");
+        document.getElementById("mobileMenu").classList.toggle("open");
       }
-
-      function showToast(message, type) {
-        var toast = document.getElementById("toast");
-        toast.textContent = message;
-        toast.className = "toast " + type + " show";
+      function showToast(msg, type) {
+        var t = document.getElementById("toast");
+        t.textContent = msg;
+        t.className = "toast " + type + " show";
         setTimeout(function () {
-          toast.className = "toast";
+          t.className = "toast";
         }, 4000);
       }
-
       function getFormData() {
         return {
           name: document.getElementById("name").value.trim(),
@@ -2272,7 +2777,6 @@
           message: document.getElementById("message").value.trim(),
         };
       }
-
       function sendViaEmail() {
         var d = getFormData();
         if (!d.name || !d.message) {
@@ -2305,7 +2809,6 @@
             btn.textContent = "Send via Email";
           });
       }
-
       function sendViaWhatsApp() {
         var d = getFormData();
         if (!d.message) {
