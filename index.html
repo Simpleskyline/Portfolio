@@ -12,7 +12,16 @@
       href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,700;12..96,800;12..96,900&family=Geist:wght@300;400;500;600&display=swap"
       rel="stylesheet"
     />
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-T9XH39FZHJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-T9XH39FZHJ');
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <style>
       *,
       *::before,
@@ -649,9 +658,9 @@
         cursor: pointer;
       }
       .project-preview iframe {
-        width: 200%;
-        height: 440px;
-        transform: scale(0.5);
+        width: 1440px;
+        height: 900px;
+        transform: scale(0.278);
         transform-origin: top left;
         border: none;
         pointer-events: none;
@@ -1390,67 +1399,6 @@
           font-size: 2.6rem;
         }
       }
-
-      .stack-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1.5rem;
-      }
-      .stack-category {
-        background: var(--card);
-        border: 1px solid var(--border);
-        border-radius: 18px;
-        padding: 1.8rem;
-        transition: border-color 0.2s;
-      }
-      .stack-category:hover { border-color: var(--purple); }
-      .stack-cat-label {
-        font-family: "Bricolage Grotesque", sans-serif;
-        font-weight: 800;
-        font-size: 0.72rem;
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
-        color: var(--purple-light);
-        margin-bottom: 1.5rem;
-        padding-bottom: 0.75rem;
-        border-bottom: 1px solid var(--border);
-      }
-      .tech-icons {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 1rem;
-      }
-      .tech-item {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 6px;
-      }
-      .tech-icon-wrap {
-        width: 48px;
-        height: 48px;
-        border-radius: 12px;
-        background: var(--bg3);
-        border: 1px solid var(--border);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.3rem;
-        transition: border-color 0.2s, transform 0.2s;
-      }
-      .tech-item:hover .tech-icon-wrap {
-        border-color: var(--purple);
-        transform: translateY(-3px);
-      }
-      .tech-item span {
-        font-size: 0.72rem;
-        color: var(--text-muted);
-        font-weight: 500;
-        text-align: center;
-      }
-      @media (max-width: 768px) {
-        .stack-grid { grid-template-columns: 1fr; }
-      }
     </style>
   </head>
   <body>
@@ -1847,56 +1795,85 @@
 
     <!-- SKILLS -->
     <section class="skills" id="skills">
-      <div class="section-header-center">
-        <h2 class="section-title">My Stack</h2>
-        <p class="section-sub">The tools I work with daily.</p>
-      </div>
-      <div class="stack-grid">
-
-        <div class="stack-category">
-          <div class="stack-cat-label">Frontend</div>
-          <div class="tech-icons">
-            <div class="tech-item"><div class="tech-icon-wrap">⚛️</div><span>React</span></div>
-            <div class="tech-item"><div class="tech-icon-wrap">▲</div><span>Next.js</span></div>
-            <div class="tech-item"><div class="tech-icon-wrap">🟦</div><span>TypeScript</span></div>
-            <div class="tech-item"><div class="tech-icon-wrap">🟨</div><span>JavaScript</span></div>
-            <div class="tech-item"><div class="tech-icon-wrap">🌊</div><span>Tailwind</span></div>
-            <div class="tech-item"><div class="tech-icon-wrap">🖥️</div><span>HTML / CSS</span></div>
+      <div class="skills-layout">
+        <div>
+          <h2 class="section-title">What My Skills Include</h2>
+          <p class="section-sub" style="margin-bottom: 2.5rem">
+            A versatile skill set across engineering, design, and product
+            development.
+          </p>
+          <div class="skill-group">
+            <div class="skill-row">
+              <span class="skill-name">Javascript / React / Next.js</span
+              ><span class="skill-pct">88%</span>
+            </div>
+            <div class="skill-track">
+              <div class="skill-fill" style="width: 88%"></div>
+            </div>
+          </div>
+          <div class="skill-group">
+            <div class="skill-row">
+              <span class="skill-name">UI/UX Design (Figma)</span
+              ><span class="skill-pct">85%</span>
+            </div>
+            <div class="skill-track">
+              <div class="skill-fill" style="width: 85%"></div>
+            </div>
+          </div>
+          <div class="skill-group">
+            <div class="skill-row">
+              <span class="skill-name">HTML / CSS</span
+              ><span class="skill-pct">95%</span>
+            </div>
+            <div class="skill-track">
+              <div class="skill-fill" style="width: 95%"></div>
+            </div>
+          </div>
+          <div class="skill-group">
+            <div class="skill-row">
+              <span class="skill-name">Django / Python</span
+              ><span class="skill-pct">80%</span>
+            </div>
+            <div class="skill-track">
+              <div class="skill-fill" style="width: 80%"></div>
+            </div>
+          </div>
+          <div class="skill-group">
+            <div class="skill-row">
+              <span class="skill-name">Git / DevOps</span
+              ><span class="skill-pct">78%</span>
+            </div>
+            <div class="skill-track">
+              <div class="skill-fill" style="width: 78%"></div>
+            </div>
           </div>
         </div>
-
-        <div class="stack-category">
-          <div class="stack-cat-label">Backend</div>
-          <div class="tech-icons">
-            <div class="tech-item"><div class="tech-icon-wrap">🐍</div><span>Python</span></div>
-            <div class="tech-item"><div class="tech-icon-wrap">🌶️</div><span>Flask</span></div>
-            <div class="tech-item"><div class="tech-icon-wrap">🦄</div><span>Django</span></div>
-            <div class="tech-item"><div class="tech-icon-wrap">🟩</div><span>Node.js</span></div>
-            <div class="tech-item"><div class="tech-icon-wrap">🔗</div><span>REST APIs</span></div>
-            <div class="tech-item"><div class="tech-icon-wrap">📱</div><span>M-Pesa</span></div>
+        <div class="skills-cards">
+          <div class="skill-card">
+            <h4>UI/UX Design</h4>
+            <p>
+              User-centered design with Figma, prototyping, and usability
+              testing.
+            </p>
+          </div>
+          <div class="skill-card">
+            <h4>Graphic Design</h4>
+            <p>Branding, illustrations, and visual communication systems.</p>
+          </div>
+          <div class="skill-card">
+            <h4>Frontend Dev</h4>
+            <p>
+              React, Next.js, TypeScript — pixel-perfect, high-performance UIs.
+            </p>
+          </div>
+          <div class="skill-card">
+            <h4>Full Stack</h4>
+            <p>
+              Node.js, databases, REST APIs, M-Pesa integration, cloud
+              deployment.
+            </p>
           </div>
         </div>
-
-        <div class="stack-category">
-          <div class="stack-cat-label">Database</div>
-          <div class="tech-icons">
-            <div class="tech-item"><div class="tech-icon-wrap">🐘</div><span>PostgreSQL</span></div>
-            <div class="tech-item"><div class="tech-icon-wrap">🍃</div><span>MySQL</span></div>
-            <div class="tech-item"><div class="tech-icon-wrap">🍀</div><span>MongoDB</span></div>
-            <div class="tech-item"><div class="tech-icon-wrap">🔥</div><span>Firebase</span></div>
-          </div>
-        </div>
-
-        <div class="stack-category">
-          <div class="stack-cat-label">Design & Tools</div>
-          <div class="tech-icons">
-            <div class="tech-item"><div class="tech-icon-wrap">🎨</div><span>Figma</span></div>
-            <div class="tech-item"><div class="tech-icon-wrap">🐙</div><span>Git</span></div>
-            <div class="tech-item"><div class="tech-icon-wrap">▲</div><span>Vercel</span></div>
-            <div class="tech-item"><div class="tech-icon-wrap">🐳</div><span>Docker</span></div>
-          </div>
-        </div>
-
       </div>
     </section>
 
