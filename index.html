@@ -33,6 +33,7 @@
         padding: 0;
         box-sizing: border-box;
       }
+
       :root {
         --purple: #7c3aed;
         --purple-light: #6d28d9;
@@ -48,10 +49,12 @@
         --text-dim: #9c9086;
         --green: #16a34a;
       }
+
       html {
         scroll-behavior: smooth;
         font-size: 16px;
       }
+
       body {
         font-family: "Geist", "Segoe UI", system-ui, sans-serif;
         background: var(--bg);
@@ -84,12 +87,14 @@
         border-radius: 50px;
         box-shadow: 0 4px 28px rgba(0, 0, 0, 0.08);
       }
+
       .nav-logo {
         display: flex;
         align-items: center;
         gap: 10px;
         text-decoration: none;
       }
+
       .nav-logo-box {
         width: 36px;
         height: 36px;
@@ -104,17 +109,20 @@
         font-size: 0.95rem;
         letter-spacing: -1px;
       }
+
       .nav-logo span {
         font-family: "Bricolage Grotesque", sans-serif;
         font-weight: 800;
         font-size: 1rem;
         color: var(--text);
       }
+
       .nav-links {
         display: flex;
         gap: 2.5rem;
         list-style: none;
       }
+
       .nav-links a {
         text-decoration: none;
         color: var(--text-muted);
@@ -124,6 +132,7 @@
         position: relative;
         padding-bottom: 2px;
       }
+
       .nav-links a::after {
         content: "";
         position: absolute;
@@ -134,12 +143,14 @@
         background: var(--purple);
         transition: width 0.25s;
       }
+
       .nav-links a:hover {
         color: var(--text);
       }
       .nav-links a:hover::after {
         width: 100%;
       }
+
       .nav-cta {
         background: var(--purple);
         color: #fff;
@@ -155,10 +166,12 @@
           background 0.2s,
           transform 0.15s;
       }
+
       .nav-cta:hover {
         background: #6d28d9;
         transform: translateY(-1px);
       }
+
       .hamburger {
         display: none;
         flex-direction: column;
@@ -166,6 +179,7 @@
         cursor: pointer;
         padding: 4px;
       }
+
       .hamburger span {
         display: block;
         width: 22px;
@@ -174,6 +188,7 @@
         border-radius: 2px;
         transition: all 0.3s;
       }
+
       .mobile-menu {
         display: none;
         position: fixed;
@@ -187,9 +202,11 @@
         flex-direction: column;
         gap: 1.5rem;
       }
+
       .mobile-menu.open {
         display: flex;
       }
+
       .mobile-menu a {
         color: var(--text-muted);
         text-decoration: none;
@@ -206,6 +223,7 @@
         position: relative;
         overflow: hidden;
       }
+
       .hero-glow {
         position: absolute;
         top: -100px;
@@ -220,6 +238,7 @@
         );
         pointer-events: none;
       }
+
       .hero-glow2 {
         position: absolute;
         bottom: -50px;
@@ -234,6 +253,7 @@
         );
         pointer-events: none;
       }
+
       .hero-inner {
         display: flex;
         align-items: center;
@@ -242,10 +262,12 @@
         position: relative;
         z-index: 1;
       }
+
       .hero-text {
         flex: 1;
         max-width: 580px;
       }
+
       .hero-badge {
         display: inline-flex;
         align-items: center;
@@ -259,6 +281,7 @@
         font-weight: 600;
         margin-bottom: 1.5rem;
       }
+
       .hero-badge-dot {
         width: 6px;
         height: 6px;
@@ -266,6 +289,7 @@
         background: var(--purple-light);
         animation: pulse 2s infinite;
       }
+
       @keyframes pulse {
         0%,
         100% {
@@ -275,6 +299,7 @@
           opacity: 0.4;
         }
       }
+
       .hero-text h1 {
         font-family: "Bricolage Grotesque", sans-serif;
         font-weight: 900;
@@ -284,9 +309,11 @@
         margin-bottom: 1.6rem;
         letter-spacing: -2px;
       }
+
       .hero-text h1 .accent {
         color: var(--purple-light);
       }
+
       .hero-text p {
         font-size: 1.125rem;
         color: var(--text-muted);
@@ -296,11 +323,13 @@
         font-weight: 400;
         letter-spacing: 0.01em;
       }
+
       .hero-btns {
         display: flex;
         gap: 1rem;
         flex-wrap: wrap;
       }
+
       .btn-primary {
         background: var(--purple);
         color: #fff;
@@ -315,11 +344,13 @@
         text-decoration: none;
         display: inline-block;
       }
+
       .btn-primary:hover {
         background: #6d28d9;
         transform: translateY(-2px);
         box-shadow: 0 10px 30px var(--purple-glow);
       }
+
       .btn-outline {
         background: transparent;
         color: var(--text);
@@ -334,16 +365,18 @@
         text-decoration: none;
         display: inline-block;
       }
+
       .btn-outline:hover {
         border-color: var(--purple);
         color: var(--purple-light);
       }
 
-      /* HERO VISUAL - ORBIT with glow */
+      /* HERO VISUAL - ORBIT */
       .hero-visual {
         flex-shrink: 0;
         position: relative;
       }
+
       .orbit-container {
         width: 360px;
         height: 360px;
@@ -351,7 +384,6 @@
         flex-shrink: 0;
       }
 
-      /* Central glow bloom */
       .orbit-glow-core {
         position: absolute;
         top: 50%;
@@ -370,6 +402,7 @@
         z-index: 5;
         animation: corePulse 3s ease-in-out infinite;
       }
+
       @keyframes corePulse {
         0%,
         100% {
@@ -381,6 +414,7 @@
           opacity: 0.8;
         }
       }
+
       .orbit-glow-spread {
         position: absolute;
         top: 50%;
@@ -399,6 +433,7 @@
         z-index: 0;
         animation: spreadPulse 3s ease-in-out infinite;
       }
+
       @keyframes spreadPulse {
         0%,
         100% {
@@ -440,6 +475,7 @@
         color: var(--purple);
         letter-spacing: -1px;
       }
+
       .orbit-ring {
         position: absolute;
         top: 50%;
@@ -447,6 +483,7 @@
         border-radius: 50%;
         transform-origin: center center;
       }
+
       .orbit-ring-1 {
         width: 180px;
         height: 180px;
@@ -456,6 +493,7 @@
         box-shadow: 0 0 12px rgba(124, 58, 237, 0.08);
         animation: spin-cw 18s linear infinite;
       }
+
       .orbit-ring-2 {
         width: 280px;
         height: 280px;
@@ -465,6 +503,7 @@
         box-shadow: 0 0 16px rgba(124, 58, 237, 0.06);
         animation: spin-ccw 28s linear infinite;
       }
+
       .orbit-ring-3 {
         width: 360px;
         height: 360px;
@@ -473,6 +512,7 @@
         border: 1px solid rgba(124, 58, 237, 0.09);
         animation: spin-cw 40s linear infinite;
       }
+
       @keyframes spin-cw {
         from {
           transform: rotate(0deg);
@@ -481,6 +521,7 @@
           transform: rotate(360deg);
         }
       }
+
       @keyframes spin-ccw {
         from {
           transform: rotate(0deg);
@@ -516,16 +557,19 @@
         flex-direction: column;
         gap: 2px;
       }
+
       .tech-logo:hover {
         box-shadow:
           0 8px 24px rgba(124, 58, 237, 0.3),
           0 0 0 2px rgba(124, 58, 237, 0.2);
         border-color: var(--purple);
       }
+
       .tech-logo svg {
         width: 20px;
         height: 20px;
       }
+
       .orbit-ring-1 .tech-logo {
         animation: spin-ccw 18s linear infinite;
       }
@@ -551,6 +595,7 @@
         top: 50%;
         transform: translateY(-50%);
       }
+
       .orbit-ring-2 .logo-pos-1 {
         top: -24px;
         left: 50%;
@@ -571,6 +616,7 @@
         top: 50%;
         transform: translateY(-50%);
       }
+
       .orbit-ring-3 .logo-pos-1 {
         top: -24px;
         left: 50%;
@@ -599,6 +645,7 @@
         bottom: 13%;
         left: 13%;
       }
+
       .tech-logo .logo-name {
         font-size: 0.6rem;
         font-weight: 600;
@@ -615,20 +662,24 @@
         position: relative;
         z-index: 1;
       }
+
       .stat-item {
         padding: 2rem 1.5rem;
         text-align: center;
         border-right: 1px solid var(--border);
       }
+
       .stat-item:last-child {
         border-right: none;
       }
+
       .stat-num {
         font-family: "Bricolage Grotesque", sans-serif;
         font-size: 2.4rem;
         font-weight: 900;
         color: var(--purple-light);
       }
+
       .stat-label {
         font-size: 0.8rem;
         color: var(--text-muted);
@@ -642,6 +693,7 @@
         position: relative;
         z-index: 1;
       }
+
       .section-title {
         font-family: "Bricolage Grotesque", sans-serif;
         font-weight: 900;
@@ -651,6 +703,7 @@
         margin-bottom: 0.6rem;
         line-height: 1.05;
       }
+
       .section-sub {
         color: var(--text-muted);
         font-size: 1.0625rem;
@@ -658,10 +711,12 @@
         max-width: 540px;
         font-weight: 400;
       }
+
       .section-header-center {
         text-align: center;
         margin-bottom: 3.5rem;
       }
+
       .section-header-center .section-sub {
         margin: 0.5rem auto 0;
       }
@@ -670,11 +725,13 @@
       .services {
         background: var(--bg2);
       }
+
       .services-grid {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         gap: 1.5rem;
       }
+
       .service-card {
         background: var(--card);
         border: 1px solid var(--border);
@@ -686,11 +743,13 @@
           box-shadow 0.25s;
         text-align: center;
       }
+
       .service-card:hover {
         border-color: var(--purple);
         transform: translateY(-4px);
         box-shadow: 0 20px 50px rgba(124, 58, 237, 0.1);
       }
+
       .service-icon {
         width: 56px;
         height: 56px;
@@ -703,6 +762,7 @@
         margin: 0 auto 1.2rem;
         font-size: 1.4rem;
       }
+
       .service-card h3 {
         font-family: "Bricolage Grotesque", sans-serif;
         font-weight: 800;
@@ -711,6 +771,7 @@
         margin-bottom: 0.7rem;
         letter-spacing: -0.3px;
       }
+
       .service-card p {
         font-size: 0.9375rem;
         color: var(--text-muted);
@@ -721,49 +782,63 @@
       .portfolio {
         background: var(--bg2);
       }
+
       .projects-grid {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 1.5rem;
       }
+
+      /* ── DARK CARDS ── */
       .project-card {
         border-radius: 24px;
         overflow: hidden;
-        background: var(--card);
-        border: 1px solid var(--border);
+        background: #13111a;
+        border: 1px solid rgba(124, 58, 237, 0.22);
         transition:
           transform 0.3s,
-          box-shadow 0.3s;
+          box-shadow 0.3s,
+          border-color 0.3s;
         display: flex;
         flex-direction: column;
         position: relative;
       }
+
       .project-card:hover {
         transform: translateY(-8px);
-        box-shadow: 0 32px 64px rgba(124, 58, 237, 0.13);
+        border-color: rgba(124, 58, 237, 0.5);
+        box-shadow:
+          0 8px 40px rgba(124, 58, 237, 0.22),
+          0 0 0 1px rgba(124, 58, 237, 0.12);
       }
+
       .project-card.featured {
         grid-column: span 2;
         flex-direction: row;
       }
+
       .project-card.featured .project-preview {
         flex: 1.2;
         height: auto;
         min-height: 280px;
       }
+
       .project-card.featured .project-body {
         flex: 1;
         padding: 2.5rem 2rem;
         justify-content: center;
       }
+
       .project-preview {
         position: relative;
         height: 240px;
         overflow: hidden;
-        background: #f0eee9;
+        background: #1a1625;
         cursor: pointer;
         flex-shrink: 0;
+        border-bottom: 1px solid rgba(124, 58, 237, 0.15);
       }
+
       .project-preview iframe {
         width: 200%;
         height: 480px;
@@ -776,16 +851,18 @@
         left: 0;
         transition: transform 0.6s ease;
       }
+
       .project-card:hover .project-preview iframe {
         transform: scale(0.5) translateY(-20px);
       }
+
       .project-preview-overlay {
         position: absolute;
         inset: 0;
         background: linear-gradient(
           180deg,
           transparent 30%,
-          rgba(0, 0, 0, 0.55) 100%
+          rgba(10, 5, 20, 0.7) 100%
         );
         opacity: 0;
         transition: opacity 0.3s;
@@ -794,19 +871,22 @@
         justify-content: flex-start;
         padding: 1.5rem;
       }
+
       .project-card:hover .project-preview-overlay {
         opacity: 1;
       }
+
       .preview-btn {
-        background: #fff;
-        color: var(--purple);
+        background: var(--purple);
+        color: #fff;
         padding: 0.5rem 1.2rem;
         border-radius: 50px;
         font-size: 0.8rem;
         font-weight: 700;
         text-decoration: none;
-        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
       }
+
       .project-num {
         position: absolute;
         top: 1rem;
@@ -824,53 +904,61 @@
         font-family: "Bricolage Grotesque", sans-serif;
         z-index: 2;
       }
+
       .project-body {
         padding: 1.6rem;
         display: flex;
         flex-direction: column;
         flex: 1;
       }
+
       .project-tag-row {
         display: flex;
         gap: 0.4rem;
         flex-wrap: wrap;
         margin-bottom: 0.8rem;
       }
+
       .project-tag {
-        background: var(--bg3);
-        color: var(--text-muted);
+        background: rgba(124, 58, 237, 0.15);
+        color: #a78bfa;
         font-size: 0.7rem;
         font-weight: 600;
         padding: 0.2rem 0.65rem;
         border-radius: 50px;
         letter-spacing: 0.02em;
+        border: 1px solid rgba(124, 58, 237, 0.2);
       }
+
       .project-body h3 {
         font-family: "Bricolage Grotesque", sans-serif;
         font-size: 1.3rem;
         font-weight: 900;
-        color: var(--text);
+        color: #f0eeff;
         margin-bottom: 0.5rem;
         letter-spacing: -0.5px;
         line-height: 1.2;
       }
+
       .project-body p {
         font-size: 0.9rem;
-        color: var(--text-muted);
+        color: #8b82a8;
         line-height: 1.75;
         margin-bottom: 1.4rem;
         flex: 1;
       }
+
       .project-link {
         display: inline-flex;
         align-items: center;
         gap: 6px;
         font-size: 0.82rem;
         font-weight: 700;
-        color: var(--purple);
+        color: #a78bfa;
         text-decoration: none;
         transition: gap 0.2s;
       }
+
       .project-link:hover {
         gap: 10px;
       }
@@ -882,6 +970,7 @@
         overflow: hidden;
         position: relative;
       }
+
       .tech-stack-section::before {
         content: "";
         position: absolute;
@@ -896,12 +985,14 @@
         );
         pointer-events: none;
       }
+
       .tech-stack-inner {
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 5rem;
         align-items: center;
       }
+
       .tech-stack-text h2 {
         font-family: "Bricolage Grotesque", sans-serif;
         font-weight: 900;
@@ -911,6 +1002,7 @@
         margin-bottom: 0.8rem;
         line-height: 1.05;
       }
+
       .tech-stack-text p {
         color: var(--text-muted);
         font-size: 1.0625rem;
@@ -918,11 +1010,13 @@
         max-width: 440px;
         margin-bottom: 2rem;
       }
+
       .tech-categories {
         display: flex;
         flex-direction: column;
         gap: 0.6rem;
       }
+
       .tech-cat-pill {
         display: inline-flex;
         align-items: center;
@@ -938,17 +1032,19 @@
         cursor: default;
         width: fit-content;
       }
+
       .tech-cat-pill:hover {
         border-color: var(--purple);
         color: var(--purple);
       }
+
       .tech-cat-dot {
         width: 8px;
         height: 8px;
         border-radius: 50%;
       }
 
-      /* BIG ORBIT with glow */
+      /* BIG ORBIT */
       .big-orbit-wrap {
         position: relative;
         width: 460px;
@@ -956,6 +1052,7 @@
         margin: 0 auto;
         animation: float-gentle 6s ease-in-out infinite;
       }
+
       @keyframes float-gentle {
         0%,
         100% {
@@ -966,7 +1063,6 @@
         }
       }
 
-      /* Big orbit glow layers */
       .big-glow-core {
         position: absolute;
         top: 50%;
@@ -985,6 +1081,7 @@
         z-index: 5;
         animation: bigCorePulse 4s ease-in-out infinite;
       }
+
       @keyframes bigCorePulse {
         0%,
         100% {
@@ -996,6 +1093,7 @@
           opacity: 0.75;
         }
       }
+
       .big-glow-spread {
         position: absolute;
         top: 50%;
@@ -1014,6 +1112,7 @@
         z-index: 0;
         animation: bigSpreadPulse 4s ease-in-out infinite;
       }
+
       @keyframes bigSpreadPulse {
         0%,
         100% {
@@ -1050,6 +1149,7 @@
           0 0 80px rgba(124, 58, 237, 0.2),
           inset 0 1px 0 rgba(255, 255, 255, 0.9);
       }
+
       .big-orbit-center-text {
         font-family: "Bricolage Grotesque", sans-serif;
         font-weight: 900;
@@ -1067,6 +1167,7 @@
         transform-origin: center center;
         pointer-events: none;
       }
+
       .big-ring-1 {
         width: 200px;
         height: 200px;
@@ -1076,6 +1177,7 @@
         box-shadow: 0 0 14px rgba(124, 58, 237, 0.1);
         animation: spin-cw 22s linear infinite;
       }
+
       .big-ring-2 {
         width: 320px;
         height: 320px;
@@ -1085,6 +1187,7 @@
         box-shadow: 0 0 20px rgba(124, 58, 237, 0.07);
         animation: spin-ccw 32s linear infinite;
       }
+
       .big-ring-3 {
         width: 440px;
         height: 440px;
@@ -1115,6 +1218,7 @@
           transform 0.3s;
         cursor: default;
       }
+
       .big-tech-logo:hover {
         box-shadow:
           0 8px 30px rgba(124, 58, 237, 0.3),
@@ -1122,12 +1226,14 @@
         border-color: var(--purple);
         transform: scale(1.12);
       }
+
       .big-tech-logo .t-icon {
         display: flex;
         align-items: center;
         justify-content: center;
         line-height: 1;
       }
+
       .big-tech-logo .t-name {
         font-size: 0.58rem;
         font-weight: 700;
@@ -1210,21 +1316,24 @@
         left: 10%;
       }
 
-      /* SKILLS CARDS ONLY */
+      /* SKILLS */
       .skills {
         background: var(--bg);
       }
+
       .skills-layout {
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 4rem;
         align-items: start;
       }
+
       .skills-cards {
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 1rem;
       }
+
       .skill-card {
         background: var(--card);
         border: 1px solid var(--border);
@@ -1234,10 +1343,12 @@
           transform 0.2s,
           border-color 0.2s;
       }
+
       .skill-card:hover {
         transform: translateY(-3px);
         border-color: var(--purple);
       }
+
       .skill-card h4 {
         font-family: "Bricolage Grotesque", sans-serif;
         font-weight: 800;
@@ -1246,24 +1357,28 @@
         color: var(--text);
         letter-spacing: -0.2px;
       }
+
       .skill-card p {
         font-size: 0.9rem;
         color: var(--text-muted);
         line-height: 1.75;
       }
 
-      /* PRICING - table only */
+      /* PRICING */
       .pricing {
         background: var(--bg2);
       }
+
       .pricing-table-wrap {
         overflow-x: auto;
         margin-top: 1rem;
       }
+
       .pricing-table {
         width: 100%;
         border-collapse: collapse;
       }
+
       .pricing-table th,
       .pricing-table td {
         padding: 1rem 1.2rem;
@@ -1271,6 +1386,7 @@
         border-bottom: 1px solid var(--border);
         font-size: 0.9rem;
       }
+
       .pricing-table th {
         font-family: "Bricolage Grotesque", sans-serif;
         font-weight: 800;
@@ -1279,6 +1395,7 @@
         letter-spacing: 0.05em;
         text-transform: uppercase;
       }
+
       .pricing-table td:first-child {
         font-weight: 600;
         color: var(--text);
@@ -1298,12 +1415,14 @@
       .testimonials {
         background: var(--bg);
       }
+
       .testimonials-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 1.5rem;
         margin-top: 3rem;
       }
+
       .testimonial-card {
         background: var(--card);
         border: 1px solid var(--border);
@@ -1313,10 +1432,12 @@
           transform 0.2s,
           border-color 0.2s;
       }
+
       .testimonial-card:hover {
         transform: translateY(-4px);
         border-color: var(--border-hover);
       }
+
       .quote-mark {
         font-size: 2.5rem;
         line-height: 1;
@@ -1325,17 +1446,20 @@
         display: block;
         font-family: Georgia, serif;
       }
+
       .testimonial-card p {
         font-size: 0.9rem;
         color: var(--text-muted);
         line-height: 1.85;
         margin-bottom: 1.5rem;
       }
+
       .testimonial-author {
         display: flex;
         align-items: center;
         gap: 12px;
       }
+
       .author-avatar {
         width: 44px;
         height: 44px;
@@ -1349,6 +1473,7 @@
         font-size: 0.85rem;
         flex-shrink: 0;
       }
+
       .author-info h5 {
         font-weight: 700;
         font-size: 0.88rem;
@@ -1363,12 +1488,14 @@
       .contact {
         background: var(--bg2);
       }
+
       .contact-layout {
         display: grid;
         grid-template-columns: 1fr 1.2fr;
         gap: 5rem;
         align-items: start;
       }
+
       .contact-info h2 {
         font-family: "Bricolage Grotesque", sans-serif;
         font-size: clamp(2rem, 3.5vw, 2.6rem);
@@ -1377,18 +1504,21 @@
         margin-bottom: 1rem;
         line-height: 1.1;
       }
+
       .contact-info > p {
         color: var(--text-muted);
         line-height: 1.85;
         margin-bottom: 2rem;
         font-size: 1rem;
       }
+
       .contact-item {
         display: flex;
         align-items: center;
         gap: 1rem;
         margin-bottom: 1.2rem;
       }
+
       .contact-icon {
         width: 48px;
         height: 48px;
@@ -1401,6 +1531,7 @@
         font-size: 1.1rem;
         flex-shrink: 0;
       }
+
       .contact-item-text label {
         font-size: 0.75rem;
         color: var(--text-muted);
@@ -1408,6 +1539,7 @@
         display: block;
         margin-bottom: 2px;
       }
+
       .contact-item-text a,
       .contact-item-text span {
         color: var(--text);
@@ -1415,19 +1547,23 @@
         font-size: 0.9rem;
         text-decoration: none;
       }
+
       .contact-item-text a:hover {
         color: var(--purple-light);
       }
+
       .contact-form {
         display: flex;
         flex-direction: column;
         gap: 1rem;
       }
+
       .form-row {
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 1rem;
       }
+
       .form-group input,
       .form-group textarea {
         width: 100%;
@@ -1443,19 +1579,23 @@
           box-shadow 0.2s;
         outline: none;
       }
+
       .form-group input::placeholder,
       .form-group textarea::placeholder {
         color: var(--text-dim);
       }
+
       .form-group input:focus,
       .form-group textarea:focus {
         border-color: var(--purple);
         box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.12);
       }
+
       .form-group textarea {
         resize: vertical;
         min-height: 130px;
       }
+
       .btn-send {
         background: var(--purple);
         color: #fff;
@@ -1469,11 +1609,13 @@
         transition: all 0.2s;
         width: 100%;
       }
+
       .btn-send:hover {
         background: #6d28d9;
         transform: translateY(-2px);
         box-shadow: 0 10px 30px var(--purple-glow);
       }
+
       .btn-send:disabled {
         opacity: 0.6;
         cursor: not-allowed;
@@ -1488,12 +1630,14 @@
         position: relative;
         z-index: 1;
       }
+
       .footer-grid {
         display: grid;
         grid-template-columns: 1.5fr 1fr 1fr 1fr;
         gap: 3rem;
         margin-bottom: 3rem;
       }
+
       .footer-brand p {
         font-size: 0.83rem;
         color: var(--text-muted);
@@ -1501,6 +1645,7 @@
         margin-top: 0.8rem;
         max-width: 240px;
       }
+
       .footer-col h4 {
         font-family: "Bricolage Grotesque", sans-serif;
         font-weight: 800;
@@ -1508,6 +1653,7 @@
         color: var(--text);
         margin-bottom: 1rem;
       }
+
       .footer-col a {
         display: block;
         color: var(--text-muted);
@@ -1519,6 +1665,7 @@
       .footer-col a:hover {
         color: var(--purple-light);
       }
+
       .footer-bottom {
         display: flex;
         justify-content: space-between;
@@ -1526,14 +1673,17 @@
         padding-top: 2rem;
         border-top: 1px solid var(--border);
       }
+
       .footer-bottom p {
         font-size: 0.8rem;
         color: var(--text-dim);
       }
+
       .footer-socials {
         display: flex;
         gap: 1rem;
       }
+
       .footer-socials a {
         width: 36px;
         height: 36px;
@@ -1547,6 +1697,7 @@
         text-decoration: none;
         transition: all 0.2s;
       }
+
       .footer-socials a:hover {
         border-color: var(--purple);
         color: var(--purple-light);
@@ -1569,6 +1720,7 @@
         transition: all 0.3s ease;
         pointer-events: none;
       }
+
       .toast.show {
         transform: translateY(0);
         opacity: 1;
@@ -1605,6 +1757,7 @@
           margin-left: -180px;
         }
       }
+
       @media (max-width: 768px) {
         .nav-links,
         .nav-cta {
@@ -1749,7 +1902,7 @@
             <strong style="color: var(--text-muted)">Free Consultation</strong>
           </p>
         </div>
-        <!-- Small orbit in hero -->
+
         <div class="hero-visual">
           <div class="orbit-container">
             <div class="orbit-glow-spread"></div>
@@ -1841,6 +1994,7 @@
                 <span class="logo-name">Figma</span>
               </div>
             </div>
+
             <div class="orbit-ring orbit-ring-2">
               <div class="tech-logo logo-pos-1">
                 <svg
@@ -1924,6 +2078,7 @@
                 <span class="logo-name">Vercel</span>
               </div>
             </div>
+
             <div class="orbit-ring orbit-ring-3">
               <div class="tech-logo logo-pos-1">
                 <svg
@@ -2238,6 +2393,7 @@
             >
           </div>
         </div>
+
         <div class="project-card">
           <div class="project-preview">
             <div class="project-num">02</div>
@@ -2276,6 +2432,7 @@
             >
           </div>
         </div>
+
         <div class="project-card">
           <div class="project-preview">
             <div class="project-num">03</div>
@@ -2314,6 +2471,7 @@
             >
           </div>
         </div>
+
         <div class="project-card">
           <div class="project-preview">
             <div class="project-num">04</div>
@@ -2354,7 +2512,7 @@
       </div>
     </section>
 
-    <!-- TECH STACK SECTION (Big Orbit) -->
+    <!-- TECH STACK SECTION -->
     <section class="tech-stack-section" id="skills">
       <div class="tech-stack-inner">
         <div class="tech-stack-text">
@@ -2383,6 +2541,7 @@
             </div>
           </div>
         </div>
+
         <div class="big-orbit-wrap">
           <div class="big-glow-spread"></div>
           <div class="big-glow-core"></div>
@@ -2669,7 +2828,7 @@
       </div>
     </section>
 
-    <!-- PRICING (table only) -->
+    <!-- PRICING -->
     <section class="pricing" id="pricing">
       <div class="section-header-center">
         <h2 class="section-title">Simple, Transparent Pricing</h2>
@@ -2892,6 +3051,7 @@
             </div>
           </div>
         </div>
+
         <div class="contact-form">
           <div class="form-row">
             <div class="form-group">
@@ -3007,9 +3167,11 @@
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script>
       emailjs.init("zaBXH6odkf0ajCDyG");
+
       function toggleMenu() {
         document.getElementById("mobileMenu").classList.toggle("open");
       }
+
       function showToast(msg, type) {
         var t = document.getElementById("toast");
         t.textContent = msg;
@@ -3018,6 +3180,7 @@
           t.className = "toast";
         }, 4000);
       }
+
       function getFormData() {
         return {
           name: document.getElementById("name").value.trim(),
@@ -3027,6 +3190,7 @@
           message: document.getElementById("message").value.trim(),
         };
       }
+
       function sendViaEmail() {
         var d = getFormData();
         if (!d.name || !d.message) {
@@ -3059,6 +3223,7 @@
             btn.textContent = "Send via Email";
           });
       }
+
       function sendViaWhatsApp() {
         var d = getFormData();
         if (!d.message) {
