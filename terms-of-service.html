@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Terms of Service — Skyline Codes</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,700;12..96,800;12..96,900&family=Geist:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+      :root {
+        --purple: #7c3aed;
+        --purple-light: #6d28d9;
+        --purple-glow: rgba(124, 58, 237, 0.12);
+        --bg: #ffffff;
+        --bg2: #f7f6f4;
+        --bg3: #eeebe6;
+        --card: #ffffff;
+        --border: #e4e0d8;
+        --border-hover: #c8c2b6;
+        --text: #18160f;
+        --text-muted: #6b6259;
+        --text-dim: #9c9086;
+      }
+
+      html { scroll-behavior: smooth; font-size: 16px; }
+
+      body {
+        font-family: "Geist", "Segoe UI", system-ui, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        -webkit-font-smoothing: antialiased;
+        font-size: 1.0625rem;
+        line-height: 1.78;
+        font-weight: 400;
+        letter-spacing: 0.012em;
+      }
+
+      /* NAV */
+      nav {
+        position: fixed;
+        top: 14px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 100;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 1.5rem;
+        height: 56px;
+        width: min(860px, 90vw);
+        background: rgba(255, 255, 255, 0.82);
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+        border: 1px solid rgba(124, 58, 237, 0.13);
+        border-radius: 50px;
+        box-shadow: 0 4px 28px rgba(0, 0, 0, 0.08);
+      }
+
+      .nav-logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        text-decoration: none;
+      }
+
+      .nav-logo-box {
+        width: 36px;
+        height: 36px;
+        border-radius: 8px;
+        border: 2px solid var(--purple);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "Bricolage Grotesque", sans-serif;
+        font-weight: 900;
+        color: var(--purple);
+        font-size: 0.95rem;
+        letter-spacing: -1px;
+      }
+
+      .nav-logo span {
+        font-family: "Bricolage Grotesque", sans-serif;
+        font-weight: 800;
+        font-size: 1rem;
+        color: var(--text);
+      }
+
+      .nav-back {
+        background: var(--bg2);
+        color: var(--text-muted);
+        border: 1px solid var(--border);
+        padding: 0.5rem 1.2rem;
+        border-radius: 8px;
+        font-family: "Geist", sans-serif;
+        font-weight: 600;
+        font-size: 0.85rem;
+        cursor: pointer;
+        text-decoration: none;
+        transition: background 0.2s, color 0.2s;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .nav-back:hover { background: var(--bg3); color: var(--text); }
+
+      /* PAGE */
+      .page-wrap {
+        max-width: 760px;
+        margin: 0 auto;
+        padding: 120px 5% 80px;
+      }
+
+      .page-label {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(124, 58, 237, 0.10);
+        border: 1px solid rgba(124, 58, 237, 0.25);
+        color: var(--purple-light);
+        padding: 0.35rem 1rem;
+        border-radius: 50px;
+        font-size: 0.78rem;
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        margin-bottom: 1.5rem;
+      }
+
+      .page-title {
+        font-family: "Bricolage Grotesque", sans-serif;
+        font-weight: 900;
+        font-size: clamp(2rem, 5vw, 3rem);
+        line-height: 1.1;
+        color: var(--text);
+        margin-bottom: 0.5rem;
+      }
+
+      .page-meta {
+        color: var(--text-dim);
+        font-size: 0.9rem;
+        margin-bottom: 3rem;
+        padding-bottom: 2rem;
+        border-bottom: 1px solid var(--border);
+      }
+
+      /* CONTENT */
+      .doc-content h2 {
+        font-family: "Bricolage Grotesque", sans-serif;
+        font-weight: 800;
+        font-size: 1.2rem;
+        color: var(--text);
+        margin: 2.5rem 0 0.75rem;
+        padding-top: 2rem;
+        border-top: 1px solid var(--border);
+      }
+
+      .doc-content h2:first-of-type { border-top: none; padding-top: 0; margin-top: 0; }
+
+      .doc-content p {
+        color: var(--text-muted);
+        margin-bottom: 1rem;
+      }
+
+      .doc-content ul {
+        list-style: none;
+        margin: 0.5rem 0 1rem 0;
+      }
+
+      .doc-content ul li {
+        color: var(--text-muted);
+        padding: 0.3rem 0 0.3rem 1.4rem;
+        position: relative;
+      }
+
+      .doc-content ul li::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--purple);
+        opacity: 0.5;
+      }
+
+      .doc-content a {
+        color: var(--purple);
+        text-decoration: none;
+      }
+
+      .doc-content a:hover { text-decoration: underline; }
+
+      .contact-card {
+        margin-top: 2.5rem;
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 1.5rem 2rem;
+      }
+
+      .contact-card p { margin: 0.2rem 0; }
+
+      /* FOOTER */
+      footer {
+        background: var(--bg2);
+        border-top: 1px solid var(--border);
+        padding: 2rem 5%;
+        text-align: center;
+        color: var(--text-dim);
+        font-size: 0.85rem;
+      }
+
+      footer a { color: var(--text-muted); text-decoration: none; margin: 0 0.75rem; }
+      footer a:hover { color: var(--purple); }
+    </style>
+  </head>
+  <body>
+
+    <nav>
+      <a class="nav-logo" href="index.html">
+        <div class="nav-logo-box">SC</div>
+        <span>Skyline Codes</span>
+      </a>
+      <a class="nav-back" href="index.html">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M19 12H5M12 5l-7 7 7 7"/>
+        </svg>
+        Back
+      </a>
+    </nav>
+
+    <div class="page-wrap">
+      <div class="page-label">Legal</div>
+      <h1 class="page-title">Terms of Service</h1>
+      <p class="page-meta">Effective Date: April 24, 2026</p>
+
+      <div class="doc-content">
+
+        <p>Please read these Terms of Service carefully before engaging Skyline Codes for any web development, design, or related services. By commissioning our services or using our website, you agree to be bound by these terms.</p>
+
+        <h2>1. Services</h2>
+        <p>Skyline Codes provides web design, web development, e-commerce solutions, custom web applications, and website maintenance services. The specific scope, deliverables, timeline, and pricing for each project will be agreed upon in a separate project proposal or written agreement.</p>
+
+        <h2>2. Acceptance of Terms</h2>
+        <p>By requesting a quote, signing a proposal, making a payment, or otherwise engaging our services, you confirm that you have read, understood, and agree to these Terms of Service. If you do not agree, please do not proceed with engaging our services.</p>
+
+        <h2>3. Payment Terms</h2>
+        <p>All prices are quoted in Kenyan Shillings (KES) unless otherwise stated. Our standard payment structure is as follows:</p>
+        <ul>
+          <li>A deposit of 50% of the agreed project fee is required before work begins.</li>
+          <li>The remaining balance is due upon project completion and before final files or launch access are handed over.</li>
+          <li>Ongoing maintenance fees are billed monthly in advance.</li>
+        </ul>
+        <p>Invoices are due within 7 days of issuance. Late payments may result in suspension of work until outstanding amounts are cleared.</p>
+
+        <h2>4. Client Responsibilities</h2>
+        <p>To ensure timely project delivery, you agree to:</p>
+        <ul>
+          <li>Provide all required content, assets, copy, images, and credentials in a timely manner.</li>
+          <li>Review and provide feedback within the agreed timelines.</li>
+          <li>Designate a primary point of contact authorised to make decisions on your behalf.</li>
+          <li>Ensure that any materials you supply do not infringe on the intellectual property rights of any third party.</li>
+        </ul>
+
+        <h2>5. Revisions and Scope</h2>
+        <p>Each project includes a defined number of revision rounds as specified in the project proposal. Requests that fall outside the agreed scope, or that substantially change the project direction, will be treated as change requests and may incur additional fees. Skyline Codes will provide a revised quote for any out-of-scope work before proceeding.</p>
+
+        <h2>6. Intellectual Property</h2>
+        <p>Upon receipt of full payment, you will own the final deliverables created specifically for your project, including custom code, designs, and content. Skyline Codes retains ownership of any pre-existing tools, frameworks, libraries, and general methodologies used in delivering the project. We reserve the right to showcase completed work in our portfolio unless you request otherwise in writing.</p>
+
+        <h2>7. Third-Party Tools and Services</h2>
+        <p>Some projects may incorporate third-party platforms, plugins, APIs, or services (for example, payment gateways, hosting providers, or CMS platforms). You acknowledge that the use of such tools is subject to the respective third-party terms and conditions. Skyline Codes is not liable for changes, disruptions, or costs imposed by those third parties.</p>
+
+        <h2>8. Confidentiality</h2>
+        <p>Both parties agree to keep confidential any proprietary or sensitive information shared during the course of the project. This obligation survives the termination of our working relationship. We will not disclose your business information to third parties without your consent, except as required by law.</p>
+
+        <h2>9. Warranties and Disclaimers</h2>
+        <p>Skyline Codes warrants that services will be performed with reasonable skill and care in accordance with industry standards. We do not warrant that websites or applications will be completely error-free or uninterrupted at all times. We provide a 30-day post-launch support period during which we will address bugs or issues arising from our work at no additional cost.</p>
+        <p>To the extent permitted by law, Skyline Codes disclaims all other warranties, express or implied, including warranties of merchantability or fitness for a particular purpose.</p>
+
+        <h2>10. Limitation of Liability</h2>
+        <p>To the fullest extent permitted by applicable law, Skyline Codes' total liability for any claim arising out of or relating to our services shall not exceed the total fees paid by you for the specific project giving rise to the claim. In no event shall we be liable for indirect, incidental, consequential, or special damages, including loss of revenue or profits.</p>
+
+        <h2>11. Termination</h2>
+        <p>Either party may terminate a project by providing written notice. In the event of termination:</p>
+        <ul>
+          <li>You will be invoiced for all work completed up to the date of termination, calculated at our standard hourly rate where not covered by the deposit.</li>
+          <li>If you terminate after the project has begun and work completed exceeds the deposit paid, the outstanding balance becomes immediately due.</li>
+          <li>If Skyline Codes terminates due to your breach of these terms, the deposit is non-refundable.</li>
+        </ul>
+
+        <h2>12. Governing Law</h2>
+        <p>These Terms of Service are governed by and construed in accordance with the laws of Kenya. Any disputes arising from these terms or our services shall be subject to the exclusive jurisdiction of the courts of Nairobi, Kenya.</p>
+
+        <h2>13. Changes to These Terms</h2>
+        <p>We reserve the right to update these Terms of Service at any time. Updated terms will be posted on our website. Continued engagement of our services after such changes constitutes your acceptance of the revised terms.</p>
+
+        <h2>14. Contact Us</h2>
+        <p>If you have any questions about these Terms of Service, please reach out to us:</p>
+        <div class="contact-card">
+          <p>📧 <a href="mailto:skylinecodes96@gmail.com">skylinecodes96@gmail.com</a></p>
+          <p>📱 <a href="https://wa.me/254796560921" target="_blank">+254 796 560 921</a></p>
+          <p>📍 Nairobi, Kenya</p>
+        </div>
+
+      </div>
+    </div>
+
+    <footer>
+      <p>
+        <a href="index.html">Home</a>
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="terms-of-service.html">Terms of Service</a>
+      </p>
+      <p style="margin-top: 0.75rem;">© 2026 Skyline Codes. All rights reserved.</p>
+    </footer>
+
+  </body>
+</html>

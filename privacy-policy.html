@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Privacy Policy — Skyline Codes</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,700;12..96,800;12..96,900&family=Geist:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+      :root {
+        --purple: #7c3aed;
+        --purple-light: #6d28d9;
+        --purple-glow: rgba(124, 58, 237, 0.12);
+        --bg: #ffffff;
+        --bg2: #f7f6f4;
+        --bg3: #eeebe6;
+        --card: #ffffff;
+        --border: #e4e0d8;
+        --border-hover: #c8c2b6;
+        --text: #18160f;
+        --text-muted: #6b6259;
+        --text-dim: #9c9086;
+      }
+
+      html { scroll-behavior: smooth; font-size: 16px; }
+
+      body {
+        font-family: "Geist", "Segoe UI", system-ui, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        -webkit-font-smoothing: antialiased;
+        font-size: 1.0625rem;
+        line-height: 1.78;
+        font-weight: 400;
+        letter-spacing: 0.012em;
+      }
+
+      /* NAV */
+      nav {
+        position: fixed;
+        top: 14px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 100;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 1.5rem;
+        height: 56px;
+        width: min(860px, 90vw);
+        background: rgba(255, 255, 255, 0.82);
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+        border: 1px solid rgba(124, 58, 237, 0.13);
+        border-radius: 50px;
+        box-shadow: 0 4px 28px rgba(0, 0, 0, 0.08);
+      }
+
+      .nav-logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        text-decoration: none;
+      }
+
+      .nav-logo-box {
+        width: 36px;
+        height: 36px;
+        border-radius: 8px;
+        border: 2px solid var(--purple);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "Bricolage Grotesque", sans-serif;
+        font-weight: 900;
+        color: var(--purple);
+        font-size: 0.95rem;
+        letter-spacing: -1px;
+      }
+
+      .nav-logo span {
+        font-family: "Bricolage Grotesque", sans-serif;
+        font-weight: 800;
+        font-size: 1rem;
+        color: var(--text);
+      }
+
+      .nav-back {
+        background: var(--bg2);
+        color: var(--text-muted);
+        border: 1px solid var(--border);
+        padding: 0.5rem 1.2rem;
+        border-radius: 8px;
+        font-family: "Geist", sans-serif;
+        font-weight: 600;
+        font-size: 0.85rem;
+        cursor: pointer;
+        text-decoration: none;
+        transition: background 0.2s, color 0.2s;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .nav-back:hover { background: var(--bg3); color: var(--text); }
+
+      /* PAGE */
+      .page-wrap {
+        max-width: 760px;
+        margin: 0 auto;
+        padding: 120px 5% 80px;
+      }
+
+      .page-label {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(124, 58, 237, 0.10);
+        border: 1px solid rgba(124, 58, 237, 0.25);
+        color: var(--purple-light);
+        padding: 0.35rem 1rem;
+        border-radius: 50px;
+        font-size: 0.78rem;
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        margin-bottom: 1.5rem;
+      }
+
+      .page-title {
+        font-family: "Bricolage Grotesque", sans-serif;
+        font-weight: 900;
+        font-size: clamp(2rem, 5vw, 3rem);
+        line-height: 1.1;
+        color: var(--text);
+        margin-bottom: 0.5rem;
+      }
+
+      .page-meta {
+        color: var(--text-dim);
+        font-size: 0.9rem;
+        margin-bottom: 3rem;
+        padding-bottom: 2rem;
+        border-bottom: 1px solid var(--border);
+      }
+
+      /* CONTENT */
+      .doc-content h2 {
+        font-family: "Bricolage Grotesque", sans-serif;
+        font-weight: 800;
+        font-size: 1.2rem;
+        color: var(--text);
+        margin: 2.5rem 0 0.75rem;
+        padding-top: 2rem;
+        border-top: 1px solid var(--border);
+      }
+
+      .doc-content h2:first-of-type { border-top: none; padding-top: 0; margin-top: 0; }
+
+      .doc-content p {
+        color: var(--text-muted);
+        margin-bottom: 1rem;
+      }
+
+      .doc-content ul {
+        list-style: none;
+        margin: 0.5rem 0 1rem 0;
+      }
+
+      .doc-content ul li {
+        color: var(--text-muted);
+        padding: 0.3rem 0 0.3rem 1.4rem;
+        position: relative;
+      }
+
+      .doc-content ul li::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--purple);
+        opacity: 0.5;
+      }
+
+      .doc-content a {
+        color: var(--purple);
+        text-decoration: none;
+      }
+
+      .doc-content a:hover { text-decoration: underline; }
+
+      .contact-card {
+        margin-top: 2.5rem;
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 1.5rem 2rem;
+      }
+
+      .contact-card p { margin: 0.2rem 0; }
+
+      /* FOOTER */
+      footer {
+        background: var(--bg2);
+        border-top: 1px solid var(--border);
+        padding: 2rem 5%;
+        text-align: center;
+        color: var(--text-dim);
+        font-size: 0.85rem;
+      }
+
+      footer a { color: var(--text-muted); text-decoration: none; margin: 0 0.75rem; }
+      footer a:hover { color: var(--purple); }
+    </style>
+  </head>
+  <body>
+
+    <nav>
+      <a class="nav-logo" href="index.html">
+        <div class="nav-logo-box">SC</div>
+        <span>Skyline Codes</span>
+      </a>
+      <a class="nav-back" href="index.html">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M19 12H5M12 5l-7 7 7 7"/>
+        </svg>
+        Back
+      </a>
+    </nav>
+
+    <div class="page-wrap">
+      <div class="page-label">Legal</div>
+      <h1 class="page-title">Privacy Policy</h1>
+      <p class="page-meta">Effective Date: April 24, 2026</p>
+
+      <div class="doc-content">
+
+        <p>Skyline Codes ("we", "our", or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, and safeguard your information when you visit our website or engage our services.</p>
+
+        <h2>1. Information We Collect</h2>
+        <p>We may collect the following types of information:</p>
+        <ul>
+          <li>Contact information such as your name, email address, and phone number when you fill out our contact form or reach out via WhatsApp.</li>
+          <li>Business information such as your company name and project details that you voluntarily provide.</li>
+          <li>Technical information such as your IP address, browser type, and pages visited, collected automatically through analytics tools.</li>
+          <li>Communications including messages, emails, and chat logs between you and Skyline Codes.</li>
+        </ul>
+
+        <h2>2. How We Use Your Information</h2>
+        <p>We use the information we collect to:</p>
+        <ul>
+          <li>Respond to your enquiries and provide the services you request.</li>
+          <li>Send project updates, invoices, and relevant communications.</li>
+          <li>Improve our website and service offerings.</li>
+          <li>Comply with applicable laws and legal obligations.</li>
+          <li>Analyse website usage through tools such as Google Analytics to understand visitor behaviour.</li>
+        </ul>
+
+        <h2>3. Sharing of Information</h2>
+        <p>We do not sell, rent, or trade your personal information to third parties. We may share your information only in the following circumstances:</p>
+        <ul>
+          <li>With trusted service providers who assist us in operating our website or delivering services, under strict confidentiality agreements.</li>
+          <li>When required by law, court order, or governmental authority.</li>
+          <li>To protect the rights, property, or safety of Skyline Codes, our clients, or others.</li>
+        </ul>
+
+        <h2>4. Data Retention</h2>
+        <p>We retain your personal information only for as long as necessary to fulfil the purposes outlined in this policy or as required by applicable law. Project-related data is typically retained for a period of three years after project completion.</p>
+
+        <h2>5. Cookies and Tracking</h2>
+        <p>Our website uses cookies and similar tracking technologies to enhance your browsing experience and collect analytics data. By using our website, you consent to the use of cookies. You may disable cookies in your browser settings; however, some features of the site may not function correctly as a result.</p>
+
+        <h2>6. Third-Party Services</h2>
+        <p>Our website may contain links to third-party websites or integrate third-party tools such as Google Analytics, EmailJS, and WhatsApp. We are not responsible for the privacy practices of those third parties and encourage you to review their respective privacy policies.</p>
+
+        <h2>7. Data Security</h2>
+        <p>We implement reasonable technical and organisational measures to protect your personal information against unauthorised access, alteration, disclosure, or destruction. However, no method of transmission over the internet is completely secure, and we cannot guarantee absolute security.</p>
+
+        <h2>8. Your Rights</h2>
+        <p>Depending on your location and applicable law, you may have the right to:</p>
+        <ul>
+          <li>Access the personal information we hold about you.</li>
+          <li>Request correction of inaccurate or incomplete data.</li>
+          <li>Request deletion of your personal data, subject to legal obligations.</li>
+          <li>Withdraw consent at any time where processing is based on consent.</li>
+        </ul>
+        <p>To exercise any of these rights, please contact us at <a href="mailto:skylinecodes96@gmail.com">skylinecodes96@gmail.com</a>.</p>
+
+        <h2>9. Children's Privacy</h2>
+        <p>Our services are not directed at individuals under the age of 18. We do not knowingly collect personal information from minors. If you believe we have inadvertently collected such information, please contact us immediately.</p>
+
+        <h2>10. Changes to This Policy</h2>
+        <p>We may update this Privacy Policy from time to time. We will notify you of significant changes by posting the updated policy on our website with a revised effective date. Continued use of our services after such changes constitutes your acceptance of the updated policy.</p>
+
+        <h2>11. Contact Us</h2>
+        <p>If you have any questions or concerns about this Privacy Policy, please contact us:</p>
+        <div class="contact-card">
+          <p>📧 <a href="mailto:skylinecodes96@gmail.com">skylinecodes96@gmail.com</a></p>
+          <p>📱 <a href="https://wa.me/254796560921" target="_blank">+254 796 560 921</a></p>
+          <p>📍 Nairobi, Kenya</p>
+        </div>
+
+      </div>
+    </div>
+
+    <footer>
+      <p>
+        <a href="index.html">Home</a>
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="terms-of-service.html">Terms of Service</a>
+      </p>
+      <p style="margin-top: 0.75rem;">© 2026 Skyline Codes. All rights reserved.</p>
+    </footer>
+
+  </body>
+</html>
