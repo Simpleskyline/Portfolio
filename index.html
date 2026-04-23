@@ -339,7 +339,7 @@
         color: var(--purple-light);
       }
 
-      /* HERO VISUAL — ORBIT */
+      /* HERO VISUAL - ORBIT with glow */
       .hero-visual {
         flex-shrink: 0;
         position: relative;
@@ -350,6 +350,67 @@
         position: relative;
         flex-shrink: 0;
       }
+
+      /* Central glow bloom */
+      .orbit-glow-core {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 160px;
+        height: 160px;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle,
+          rgba(124, 58, 237, 0.35) 0%,
+          rgba(124, 58, 237, 0.12) 40%,
+          transparent 70%
+        );
+        pointer-events: none;
+        z-index: 5;
+        animation: corePulse 3s ease-in-out infinite;
+      }
+      @keyframes corePulse {
+        0%,
+        100% {
+          transform: translate(-50%, -50%) scale(1);
+          opacity: 1;
+        }
+        50% {
+          transform: translate(-50%, -50%) scale(1.15);
+          opacity: 0.8;
+        }
+      }
+      .orbit-glow-spread {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 340px;
+        height: 340px;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle,
+          rgba(124, 58, 237, 0.18) 0%,
+          rgba(124, 58, 237, 0.06) 45%,
+          transparent 70%
+        );
+        pointer-events: none;
+        z-index: 0;
+        animation: spreadPulse 3s ease-in-out infinite;
+      }
+      @keyframes spreadPulse {
+        0%,
+        100% {
+          transform: translate(-50%, -50%) scale(1);
+          opacity: 0.9;
+        }
+        50% {
+          transform: translate(-50%, -50%) scale(1.08);
+          opacity: 0.6;
+        }
+      }
+
       .orbit-center {
         position: absolute;
         top: 50%;
@@ -358,12 +419,20 @@
         width: 80px;
         height: 80px;
         border-radius: 20px;
-        background: var(--card);
-        border: 2px solid var(--purple);
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.95),
+          rgba(245, 240, 255, 0.9)
+        );
+        border: 2px solid rgba(124, 58, 237, 0.6);
         display: flex;
         align-items: center;
         justify-content: center;
-        box-shadow: 0 0 40px rgba(124, 58, 237, 0.18);
+        box-shadow:
+          0 0 0 6px rgba(124, 58, 237, 0.08),
+          0 0 24px rgba(124, 58, 237, 0.35),
+          0 0 60px rgba(124, 58, 237, 0.18),
+          inset 0 1px 0 rgba(255, 255, 255, 0.8);
         z-index: 10;
         font-family: "Bricolage Grotesque", sans-serif;
         font-weight: 900;
@@ -376,7 +445,6 @@
         top: 50%;
         left: 50%;
         border-radius: 50%;
-        border: 1px dashed rgba(124, 58, 237, 0.15);
         transform-origin: center center;
       }
       .orbit-ring-1 {
@@ -384,6 +452,8 @@
         height: 180px;
         margin-top: -90px;
         margin-left: -90px;
+        border: 1px solid rgba(124, 58, 237, 0.2);
+        box-shadow: 0 0 12px rgba(124, 58, 237, 0.08);
         animation: spin-cw 18s linear infinite;
       }
       .orbit-ring-2 {
@@ -391,6 +461,8 @@
         height: 280px;
         margin-top: -140px;
         margin-left: -140px;
+        border: 1px solid rgba(124, 58, 237, 0.14);
+        box-shadow: 0 0 16px rgba(124, 58, 237, 0.06);
         animation: spin-ccw 28s linear infinite;
       }
       .orbit-ring-3 {
@@ -398,6 +470,7 @@
         height: 360px;
         margin-top: -180px;
         margin-left: -180px;
+        border: 1px solid rgba(124, 58, 237, 0.09);
         animation: spin-cw 40s linear infinite;
       }
       @keyframes spin-cw {
@@ -422,15 +495,17 @@
         width: 48px;
         height: 48px;
         border-radius: 12px;
-        background: var(--card);
-        border: 1px solid var(--border);
+        background: rgba(255, 255, 255, 0.96);
+        border: 1px solid rgba(124, 58, 237, 0.2);
         display: flex;
         align-items: center;
         justify-content: center;
         font-size: 0.72rem;
         font-weight: 700;
         color: var(--text-muted);
-        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+        box-shadow:
+          0 4px 16px rgba(124, 58, 237, 0.15),
+          0 2px 8px rgba(0, 0, 0, 0.06);
         transition:
           box-shadow 0.3s,
           border-color 0.3s;
@@ -442,15 +517,15 @@
         gap: 2px;
       }
       .tech-logo:hover {
-        box-shadow: 0 8px 24px rgba(124, 58, 237, 0.18);
+        box-shadow:
+          0 8px 24px rgba(124, 58, 237, 0.3),
+          0 0 0 2px rgba(124, 58, 237, 0.2);
         border-color: var(--purple);
       }
-      .tech-logo svg,
-      .tech-logo img {
-        width: 22px;
-        height: 22px;
+      .tech-logo svg {
+        width: 20px;
+        height: 20px;
       }
-      /* Counter-rotate logos so text always stays upright */
       .orbit-ring-1 .tech-logo {
         animation: spin-ccw 18s linear infinite;
       }
@@ -461,7 +536,6 @@
         animation: spin-ccw 40s linear infinite;
       }
 
-      /* Positions on ring: top center of ring */
       .orbit-ring-1 .logo-pos-1 {
         top: -24px;
         left: 50%;
@@ -477,7 +551,6 @@
         top: 50%;
         transform: translateY(-50%);
       }
-
       .orbit-ring-2 .logo-pos-1 {
         top: -24px;
         left: 50%;
@@ -498,7 +571,6 @@
         top: 50%;
         transform: translateY(-50%);
       }
-
       .orbit-ring-3 .logo-pos-1 {
         top: -24px;
         left: 50%;
@@ -522,16 +594,10 @@
       .orbit-ring-3 .logo-pos-5 {
         top: 13%;
         right: 13%;
-        transform: translate(0, 0);
       }
       .orbit-ring-3 .logo-pos-6 {
         bottom: 13%;
         left: 13%;
-      }
-
-      .tech-logo .logo-icon {
-        font-size: 1.1rem;
-        line-height: 1;
       }
       .tech-logo .logo-name {
         font-size: 0.6rem;
@@ -649,49 +715,6 @@
         font-size: 0.9375rem;
         color: var(--text-muted);
         line-height: 1.8;
-      }
-
-      /* WHY */
-      .why {
-        background: var(--bg);
-      }
-      .why-grid {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 1.5rem;
-      }
-      .why-card {
-        background: var(--card);
-        border: 1px solid var(--border);
-        border-radius: 18px;
-        padding: 2rem 1.5rem;
-        text-align: center;
-        transition:
-          border-color 0.25s,
-          transform 0.25s;
-      }
-      .why-card:hover {
-        border-color: var(--purple);
-        transform: translateY(-4px);
-      }
-      .why-icon {
-        width: 56px;
-        height: 56px;
-        border-radius: 14px;
-        background: rgba(124, 58, 237, 0.1);
-        border: 1px solid rgba(124, 58, 237, 0.2);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin: 0 auto 1.2rem;
-        font-size: 1.4rem;
-      }
-      .why-card h3 {
-        font-family: "Bricolage Grotesque", sans-serif;
-        font-weight: 800;
-        font-size: 1.1rem;
-        color: var(--text);
-        letter-spacing: -0.3px;
       }
 
       /* PORTFOLIO */
@@ -925,7 +948,7 @@
         border-radius: 50%;
       }
 
-      /* BIG ORBIT (tech stack visual) */
+      /* BIG ORBIT with glow */
       .big-orbit-wrap {
         position: relative;
         width: 460px;
@@ -943,6 +966,66 @@
         }
       }
 
+      /* Big orbit glow layers */
+      .big-glow-core {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 180px;
+        height: 180px;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle,
+          rgba(124, 58, 237, 0.3) 0%,
+          rgba(124, 58, 237, 0.1) 45%,
+          transparent 70%
+        );
+        pointer-events: none;
+        z-index: 5;
+        animation: bigCorePulse 4s ease-in-out infinite;
+      }
+      @keyframes bigCorePulse {
+        0%,
+        100% {
+          transform: translate(-50%, -50%) scale(1);
+          opacity: 1;
+        }
+        50% {
+          transform: translate(-50%, -50%) scale(1.12);
+          opacity: 0.75;
+        }
+      }
+      .big-glow-spread {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 420px;
+        height: 420px;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle,
+          rgba(124, 58, 237, 0.12) 0%,
+          rgba(124, 58, 237, 0.04) 50%,
+          transparent 70%
+        );
+        pointer-events: none;
+        z-index: 0;
+        animation: bigSpreadPulse 4s ease-in-out infinite;
+      }
+      @keyframes bigSpreadPulse {
+        0%,
+        100% {
+          transform: translate(-50%, -50%) scale(1);
+          opacity: 0.85;
+        }
+        50% {
+          transform: translate(-50%, -50%) scale(1.06);
+          opacity: 0.55;
+        }
+      }
+
       .big-orbit-center {
         position: absolute;
         top: 50%;
@@ -953,15 +1036,19 @@
         border-radius: 24px;
         background: linear-gradient(
           135deg,
-          rgba(124, 58, 237, 0.15),
-          rgba(109, 40, 217, 0.08)
+          rgba(255, 255, 255, 0.98),
+          rgba(245, 240, 255, 0.92)
         );
-        border: 1.5px solid rgba(124, 58, 237, 0.3);
+        border: 1.5px solid rgba(124, 58, 237, 0.5);
         display: flex;
         align-items: center;
         justify-content: center;
         z-index: 10;
-        box-shadow: 0 0 60px rgba(124, 58, 237, 0.12);
+        box-shadow:
+          0 0 0 8px rgba(124, 58, 237, 0.07),
+          0 0 28px rgba(124, 58, 237, 0.4),
+          0 0 80px rgba(124, 58, 237, 0.2),
+          inset 0 1px 0 rgba(255, 255, 255, 0.9);
       }
       .big-orbit-center-text {
         font-family: "Bricolage Grotesque", sans-serif;
@@ -985,7 +1072,8 @@
         height: 200px;
         margin-top: -100px;
         margin-left: -100px;
-        border: 1px dashed rgba(124, 58, 237, 0.12);
+        border: 1px solid rgba(124, 58, 237, 0.22);
+        box-shadow: 0 0 14px rgba(124, 58, 237, 0.1);
         animation: spin-cw 22s linear infinite;
       }
       .big-ring-2 {
@@ -993,7 +1081,8 @@
         height: 320px;
         margin-top: -160px;
         margin-left: -160px;
-        border: 1px dashed rgba(124, 58, 237, 0.09);
+        border: 1px solid rgba(124, 58, 237, 0.15);
+        box-shadow: 0 0 20px rgba(124, 58, 237, 0.07);
         animation: spin-ccw 32s linear infinite;
       }
       .big-ring-3 {
@@ -1001,7 +1090,7 @@
         height: 440px;
         margin-top: -220px;
         margin-left: -220px;
-        border: 1px dashed rgba(124, 58, 237, 0.06);
+        border: 1px solid rgba(124, 58, 237, 0.09);
         animation: spin-cw 46s linear infinite;
       }
 
@@ -1010,14 +1099,16 @@
         width: 54px;
         height: 54px;
         border-radius: 14px;
-        background: var(--card);
-        border: 1px solid var(--border);
+        background: rgba(255, 255, 255, 0.97);
+        border: 1px solid rgba(124, 58, 237, 0.2);
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         gap: 3px;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.07);
+        box-shadow:
+          0 4px 20px rgba(124, 58, 237, 0.16),
+          0 2px 8px rgba(0, 0, 0, 0.05);
         transition:
           box-shadow 0.3s,
           border-color 0.3s,
@@ -1025,12 +1116,16 @@
         cursor: default;
       }
       .big-tech-logo:hover {
-        box-shadow: 0 8px 30px rgba(124, 58, 237, 0.2);
+        box-shadow:
+          0 8px 30px rgba(124, 58, 237, 0.3),
+          0 0 0 2px rgba(124, 58, 237, 0.25);
         border-color: var(--purple);
         transform: scale(1.12);
       }
       .big-tech-logo .t-icon {
-        font-size: 1.25rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         line-height: 1;
       }
       .big-tech-logo .t-name {
@@ -1040,7 +1135,6 @@
         line-height: 1;
       }
 
-      /* Ring 1: 3 logos */
       .big-ring-1 .big-tech-logo {
         animation: spin-ccw 22s linear infinite;
       }
@@ -1060,7 +1154,6 @@
         transform: translateY(-50%);
       }
 
-      /* Ring 2: 4 logos */
       .big-ring-2 .big-tech-logo {
         animation: spin-cw 32s linear infinite;
       }
@@ -1085,7 +1178,6 @@
         transform: translateY(-50%);
       }
 
-      /* Ring 3: 6 logos */
       .big-ring-3 .big-tech-logo {
         animation: spin-ccw 46s linear infinite;
       }
@@ -1118,69 +1210,7 @@
         left: 10%;
       }
 
-      /* PROCESS */
-      .process {
-        background: var(--bg2);
-      }
-      .process-steps {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 2rem;
-        position: relative;
-      }
-      .process-steps::before {
-        content: "";
-        position: absolute;
-        top: 45px;
-        left: 16.6%;
-        right: 16.6%;
-        height: 2px;
-        background: linear-gradient(
-          90deg,
-          transparent,
-          var(--purple),
-          var(--purple-light),
-          var(--purple),
-          transparent
-        );
-        opacity: 0.4;
-      }
-      .process-step {
-        background: var(--card);
-        border: 1px solid var(--border);
-        border-radius: 18px;
-        padding: 2rem 1.5rem;
-        text-align: center;
-        transition:
-          border-color 0.25s,
-          transform 0.25s;
-      }
-      .process-step:hover {
-        border-color: var(--purple);
-        transform: translateY(-4px);
-      }
-      .step-icon {
-        width: 56px;
-        height: 56px;
-        border-radius: 14px;
-        background: rgba(124, 58, 237, 0.1);
-        border: 1px solid rgba(124, 58, 237, 0.25);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin: 0 auto 1rem;
-        font-size: 1.4rem;
-        color: var(--purple-light);
-      }
-      .process-step h3 {
-        font-family: "Bricolage Grotesque", sans-serif;
-        font-weight: 800;
-        font-size: 1.1rem;
-        color: var(--text);
-        letter-spacing: -0.3px;
-      }
-
-      /* SKILLS */
+      /* SKILLS CARDS ONLY */
       .skills {
         background: var(--bg);
       }
@@ -1189,35 +1219,6 @@
         grid-template-columns: 1fr 1fr;
         gap: 4rem;
         align-items: start;
-      }
-      .skill-group {
-        margin-bottom: 1.5rem;
-      }
-      .skill-row {
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 0.5rem;
-      }
-      .skill-name {
-        font-size: 0.9375rem;
-        font-weight: 600;
-        color: var(--text);
-      }
-      .skill-pct {
-        font-size: 0.875rem;
-        color: var(--purple-light);
-        font-weight: 700;
-      }
-      .skill-track {
-        height: 5px;
-        background: var(--bg3);
-        border-radius: 10px;
-        overflow: hidden;
-      }
-      .skill-fill {
-        height: 100%;
-        border-radius: 10px;
-        background: linear-gradient(90deg, var(--purple), var(--purple-light));
       }
       .skills-cards {
         display: grid;
@@ -1251,131 +1252,9 @@
         line-height: 1.75;
       }
 
-      /* PRICING */
+      /* PRICING - table only */
       .pricing {
         background: var(--bg2);
-      }
-      .pricing-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 1.5rem;
-        margin-bottom: 2rem;
-      }
-      .pricing-card {
-        background: var(--card);
-        border: 1px solid var(--border);
-        border-radius: 20px;
-        padding: 2rem;
-        transition:
-          transform 0.25s,
-          border-color 0.25s;
-      }
-      .pricing-card:hover {
-        transform: translateY(-4px);
-      }
-      .pricing-card.featured {
-        border-color: var(--purple);
-        background: #1a1228;
-        box-shadow:
-          0 0 0 1px var(--purple),
-          0 20px 50px rgba(124, 58, 237, 0.2);
-      }
-      .pricing-badge {
-        display: inline-block;
-        background: var(--purple);
-        color: #fff;
-        font-size: 0.72rem;
-        font-weight: 700;
-        padding: 0.25rem 0.7rem;
-        border-radius: 50px;
-        margin-bottom: 1rem;
-      }
-      .pricing-card h3 {
-        font-family: "Bricolage Grotesque", sans-serif;
-        font-weight: 900;
-        font-size: 1.5rem;
-        color: var(--text);
-        margin-bottom: 0.4rem;
-        letter-spacing: -0.5px;
-      }
-      .pricing-card .plan-desc {
-        font-size: 0.9375rem;
-        color: var(--text-muted);
-        margin-bottom: 1.2rem;
-        line-height: 1.8;
-      }
-      .price {
-        font-family: "Bricolage Grotesque", sans-serif;
-        font-weight: 900;
-        font-size: 2.8rem;
-        color: var(--text);
-        margin-bottom: 0.25rem;
-        letter-spacing: -1px;
-      }
-      .price span.currency {
-        font-size: 1.1rem;
-        vertical-align: top;
-        margin-top: 0.7rem;
-        display: inline-block;
-        color: var(--text-muted);
-        font-weight: 600;
-      }
-      .price-note {
-        font-size: 0.8rem;
-        color: var(--text-dim);
-        margin-bottom: 1.5rem;
-      }
-      .pricing-features {
-        list-style: none;
-        margin-bottom: 1.8rem;
-        display: flex;
-        flex-direction: column;
-        gap: 0.75rem;
-      }
-      .pricing-features li {
-        display: flex;
-        align-items: flex-start;
-        gap: 8px;
-        font-size: 0.9375rem;
-        color: var(--text-muted);
-        line-height: 1.65;
-      }
-      .pricing-features li::before {
-        content: "";
-        width: 16px;
-        height: 16px;
-        flex-shrink: 0;
-        margin-top: 1px;
-        background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%2322c55e'%3E%3Cpath d='M13.5 3.5L6 11 2.5 7.5' stroke='%2322c55e' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")
-          center/contain no-repeat;
-      }
-      .pricing-btn {
-        width: 100%;
-        padding: 0.85rem;
-        border-radius: 10px;
-        font-family: "Geist", sans-serif;
-        font-weight: 700;
-        font-size: 0.9rem;
-        cursor: pointer;
-        transition: all 0.2s;
-        text-align: center;
-        text-decoration: none;
-        display: block;
-        border: 1px solid var(--border-hover);
-        color: var(--text);
-        background: transparent;
-      }
-      .pricing-btn:hover {
-        border-color: var(--purple);
-        color: var(--purple-light);
-      }
-      .pricing-btn.featured-btn {
-        background: var(--purple);
-        border-color: var(--purple);
-        color: #fff;
-      }
-      .pricing-btn.featured-btn:hover {
-        background: #6d28d9;
       }
       .pricing-table-wrap {
         overflow-x: auto;
@@ -1409,7 +1288,7 @@
         font-weight: 600;
       }
       .pricing-table tr:hover td {
-        background: rgba(124, 58, 237, 0.04);
+        background: rgba(124, 58, 237, 0.02);
       }
       .pricing-table tr:last-child td {
         border-bottom: none;
@@ -1705,8 +1584,7 @@
 
       /* RESPONSIVE */
       @media (max-width: 1024px) {
-        .services-grid,
-        .why-grid {
+        .services-grid {
           grid-template-columns: repeat(2, 1fr);
         }
         .footer-grid {
@@ -1750,8 +1628,6 @@
           border-right: none;
         }
         .services-grid,
-        .why-grid,
-        .pricing-grid,
         .testimonials-grid {
           grid-template-columns: 1fr;
         }
@@ -1771,12 +1647,6 @@
         }
         .form-row {
           grid-template-columns: 1fr;
-        }
-        .process-steps {
-          grid-template-columns: 1fr;
-        }
-        .process-steps::before {
-          display: none;
         }
         .footer-grid {
           grid-template-columns: 1fr;
@@ -1882,63 +1752,288 @@
         <!-- Small orbit in hero -->
         <div class="hero-visual">
           <div class="orbit-container">
+            <div class="orbit-glow-spread"></div>
+            <div class="orbit-glow-core"></div>
             <div class="orbit-center">TM</div>
             <div class="orbit-ring orbit-ring-1">
               <div class="tech-logo logo-pos-1">
-                <span class="logo-icon">⚛️</span
-                ><span class="logo-name">React</span>
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle cx="12" cy="12" r="2.5" fill="#61DAFB" />
+                  <path
+                    d="M12 4.5c4.97 0 9 3.358 9 7.5s-4.03 7.5-9 7.5S3 16.142 3 12s4.03-7.5 9-7.5z"
+                    stroke="#61DAFB"
+                    stroke-width="1.2"
+                    fill="none"
+                  />
+                  <ellipse
+                    cx="12"
+                    cy="12"
+                    rx="9"
+                    ry="3.5"
+                    stroke="#61DAFB"
+                    stroke-width="1.2"
+                    fill="none"
+                    transform="rotate(60 12 12)"
+                  />
+                  <ellipse
+                    cx="12"
+                    cy="12"
+                    rx="9"
+                    ry="3.5"
+                    stroke="#61DAFB"
+                    stroke-width="1.2"
+                    fill="none"
+                    transform="rotate(-60 12 12)"
+                  />
+                </svg>
+                <span class="logo-name">React</span>
               </div>
               <div class="tech-logo logo-pos-2">
-                <span class="logo-icon">🐍</span
-                ><span class="logo-name">Python</span>
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M12 3L4 7v5c0 4.418 3.4 8.15 8 9 4.6-.85 8-4.582 8-9V7l-8-4z"
+                    fill="#3776AB"
+                    stroke="#3776AB"
+                    stroke-width="0.5"
+                  />
+                  <path
+                    d="M8.5 12.5c.5-1 1.5-1.5 2.5-1.5h2l1-2H9c-1.5 0-3 1-3.5 2.5L8.5 12.5z"
+                    fill="white"
+                  />
+                  <path
+                    d="M15.5 11.5c-.5 1-1.5 1.5-2.5 1.5h-2l-1 2H15c1.5 0 3-1 3.5-2.5L15.5 11.5z"
+                    fill="white"
+                  />
+                </svg>
+                <span class="logo-name">Python</span>
               </div>
               <div class="tech-logo logo-pos-3">
-                <span class="logo-icon">🎨</span
-                ><span class="logo-name">Figma</span>
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M5 7h14M5 12h14M5 17h14"
+                    stroke="#F24E1E"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                  />
+                  <rect
+                    x="3"
+                    y="3"
+                    width="18"
+                    height="18"
+                    rx="3"
+                    stroke="#F24E1E"
+                    stroke-width="1.5"
+                    fill="none"
+                  />
+                </svg>
+                <span class="logo-name">Figma</span>
               </div>
             </div>
             <div class="orbit-ring orbit-ring-2">
               <div class="tech-logo logo-pos-1">
-                <span class="logo-icon">▲</span
-                ><span class="logo-name">Next.js</span>
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M12 3L4 8v8l8 5 8-5V8L12 3z"
+                    fill="#000"
+                    stroke="#000"
+                    stroke-width="0.5"
+                  />
+                  <path
+                    d="M12 3v18M4 8l8 5 8-5"
+                    stroke="white"
+                    stroke-width="1.2"
+                  />
+                </svg>
+                <span class="logo-name">Next.js</span>
               </div>
               <div class="tech-logo logo-pos-2">
-                <span class="logo-icon">🐘</span
-                ><span class="logo-name">Django</span>
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    x="3"
+                    y="3"
+                    width="18"
+                    height="18"
+                    rx="2"
+                    fill="#0C4B33"
+                  />
+                  <path
+                    d="M8 8h8v2H8V8zm0 3h6v2H8v-2zm0 3h8v2H8v-2z"
+                    fill="#44B78B"
+                  />
+                </svg>
+                <span class="logo-name">Django</span>
               </div>
               <div class="tech-logo logo-pos-3">
-                <span class="logo-icon">🐬</span
-                ><span class="logo-name">MySQL</span>
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <ellipse cx="12" cy="8" rx="8" ry="3" fill="#00618A" />
+                  <path
+                    d="M4 8v3c0 1.657 3.582 3 8 3s8-1.343 8-3V8"
+                    fill="#00618A"
+                  />
+                  <path
+                    d="M4 11v3c0 1.657 3.582 3 8 3s8-1.343 8-3v-3"
+                    stroke="#00618A"
+                    stroke-width="0.5"
+                    fill="#0174BE"
+                  />
+                  <path
+                    d="M4 14v3c0 1.657 3.582 3 8 3s8-1.343 8-3v-3"
+                    fill="#0174BE"
+                    opacity="0.6"
+                  />
+                </svg>
+                <span class="logo-name">MySQL</span>
               </div>
               <div class="tech-logo logo-pos-4">
-                <span class="logo-icon">☁️</span
-                ><span class="logo-name">Vercel</span>
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M3 7l9-4 9 4v10l-9 4-9-4V7z" fill="#000" />
+                  <path
+                    d="M3 7l9 4 9-4M12 11v10"
+                    stroke="white"
+                    stroke-width="1.2"
+                  />
+                </svg>
+                <span class="logo-name">Vercel</span>
               </div>
             </div>
             <div class="orbit-ring orbit-ring-3">
               <div class="tech-logo logo-pos-1">
-                <span class="logo-icon">🟨</span
-                ><span class="logo-name">JS</span>
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    x="2"
+                    y="2"
+                    width="20"
+                    height="20"
+                    rx="3"
+                    fill="#F7DF1E"
+                  />
+                  <path
+                    d="M8 16.5c.3.5.7.8 1.4.8.7 0 1.1-.3 1.1-.9V10h2v6.5c0 2-1.1 2.9-2.9 2.9-1.5 0-2.5-.8-3-1.8L8 16.5zM14.5 16.4c.4.6 1 1 1.9 1 .8 0 1.3-.4 1.3-1 0-.7-.5-1-1.4-1.4l-.5-.2c-1.4-.6-2.3-1.4-2.3-2.9 0-1.4 1.1-2.5 2.8-2.5 1.2 0 2.1.4 2.7 1.5l-1.5.9c-.3-.5-.7-.8-1.2-.8s-.9.3-.9.7c0 .5.3.7 1.1 1.1l.5.2c1.6.7 2.6 1.5 2.6 3.1 0 1.7-1.4 2.7-3.2 2.7-1.8 0-3-1-3.6-2.2l1.7-.9z"
+                    fill="#323330"
+                  />
+                </svg>
+                <span class="logo-name">JS</span>
               </div>
               <div class="tech-logo logo-pos-2">
-                <span class="logo-icon">💠</span
-                ><span class="logo-name">CSS</span>
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M3 4h18v2.5H3zM3 11h18v2.5H3zM3 18h18v2.5H3z"
+                    fill="#264DE4"
+                  />
+                  <path
+                    d="M5 4h14l-1.5 14L12 20l-5.5-2L5 4z"
+                    fill="#264DE4"
+                    opacity="0.2"
+                  />
+                </svg>
+                <span class="logo-name">CSS</span>
               </div>
               <div class="tech-logo logo-pos-3">
-                <span class="logo-icon">🐙</span
-                ><span class="logo-name">GitHub</span>
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.17 6.839 9.49.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836a9.59 9.59 0 012.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.167 22 16.418 22 12c0-5.523-4.477-10-10-10z"
+                    fill="#181717"
+                  />
+                </svg>
+                <span class="logo-name">GitHub</span>
               </div>
               <div class="tech-logo logo-pos-4">
-                <span class="logo-icon">🔥</span
-                ><span class="logo-name">Firebase</span>
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M12 2.5L3 8v8l9 5.5 9-5.5V8L12 2.5z"
+                    fill="#FFA611"
+                  />
+                  <path
+                    d="M12 2.5v18.5M3 8l9 5.5 9-5.5"
+                    stroke="#FF6D00"
+                    stroke-width="0.8"
+                  />
+                </svg>
+                <span class="logo-name">Firebase</span>
               </div>
               <div class="tech-logo logo-pos-5">
-                <span class="logo-icon">🟦</span
-                ><span class="logo-name">TS</span>
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    x="2"
+                    y="2"
+                    width="20"
+                    height="20"
+                    rx="3"
+                    fill="#3178C6"
+                  />
+                  <path
+                    d="M5 13.5h4.5M12 8v8M16 8.5c-.5-.3-1-.5-1.5-.5-1 0-1.5.5-1.5 1.2 0 .8.6 1.2 1.5 1.5 1.2.4 2 1 2 2.2 0 1.3-1 2.1-2.5 2.1-.7 0-1.5-.2-2-.5"
+                    stroke="white"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                  />
+                </svg>
+                <span class="logo-name">TS</span>
               </div>
               <div class="tech-logo logo-pos-6">
-                <span class="logo-icon">🌿</span
-                ><span class="logo-name">MongoDB</span>
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"
+                    fill="#47A248"
+                  />
+                  <path
+                    d="M8 9.5c0-1 .7-1.5 2-1.5h4c1.3 0 2 .5 2 1.5v1c0 .8-.4 1.3-1.2 1.5l1.5 3.5h-2L13 12h-1.5v3.5H9.5v-6H8V9.5z"
+                    fill="white"
+                  />
+                </svg>
+                <span class="logo-name">MongoDB</span>
               </div>
             </div>
           </div>
@@ -1977,7 +2072,31 @@
       </div>
       <div class="services-grid">
         <div class="service-card">
-          <div class="service-icon">💼</div>
+          <div class="service-icon">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect
+                x="2"
+                y="3"
+                width="20"
+                height="14"
+                rx="2"
+                stroke="#7c3aed"
+                stroke-width="1.8"
+              />
+              <path
+                d="M8 21h8M12 17v4"
+                stroke="#7c3aed"
+                stroke-width="1.8"
+                stroke-linecap="round"
+              />
+            </svg>
+          </div>
           <h3>Business Websites</h3>
           <p>
             Clean, fast, mobile-first websites that make your brand stand out
@@ -1985,15 +2104,61 @@
           </p>
         </div>
         <div class="service-card">
-          <div class="service-icon">🛒</div>
+          <div class="service-icon">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M6 2h12a2 2 0 012 2v16a2 2 0 01-2 2H6a2 2 0 01-2-2V4a2 2 0 012-2z"
+                stroke="#7c3aed"
+                stroke-width="1.8"
+              />
+              <path
+                d="M9 10h6M9 14h4M12 6v2"
+                stroke="#7c3aed"
+                stroke-width="1.8"
+                stroke-linecap="round"
+              />
+            </svg>
+          </div>
           <h3>E-Commerce Stores</h3>
           <p>
-            Online shops with secure payments M-Pesa & cards so you can sell
+            Online shops with secure payments, M-Pesa and cards, so you can sell
             24/7 without limits.
           </p>
         </div>
         <div class="service-card">
-          <div class="service-icon">🔧</div>
+          <div class="service-icon">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3-3a1 1 0 000-1.4l-1.6-1.6a1 1 0 00-1.4 0l-3 3z"
+                stroke="#7c3aed"
+                stroke-width="1.8"
+              />
+              <path
+                d="M13 7L7 13a2 2 0 000 2.8L9.2 18a2 2 0 002.8 0L18 12"
+                stroke="#7c3aed"
+                stroke-width="1.8"
+                stroke-linecap="round"
+              />
+              <path
+                d="M3 21l3-3"
+                stroke="#7c3aed"
+                stroke-width="1.8"
+                stroke-linecap="round"
+              />
+            </svg>
+          </div>
           <h3>Custom Web Apps</h3>
           <p>
             Tailored solutions for bookings, portals, dashboards, and unique
@@ -2001,41 +2166,27 @@
           </p>
         </div>
         <div class="service-card">
-          <div class="service-icon">🛡️</div>
-          <h3>Website Care & Support</h3>
+          <div class="service-icon">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"
+                stroke="#7c3aed"
+                stroke-width="1.8"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </div>
+          <h3>Website Care and Support</h3>
           <p>
             Ongoing updates, security monitoring, and improvements after your
             project is launched.
           </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- WHY US -->
-    <section class="why" id="about">
-      <div class="section-header-center">
-        <h2 class="section-title">Why Choose Me?</h2>
-        <p class="section-sub">
-          More than a developer — a dedicated technical partner for your
-          business.
-        </p>
-      </div>
-      <div class="why-grid">
-        <div class="why-card">
-          <div class="why-icon">⚡</div>
-          <h3>Lightning Fast Delivery</h3>
-        </div>
-        <div class="why-card">
-          <div class="why-icon">🛡️</div>
-          <h3>Bank-Grade Security</h3>
-        </div>
-        <div class="why-card">
-          <div class="why-icon">❤️</div>
-          <h3>Built For You</h3>
-        </div>
-        <div class="why-card">
-          <div class="why-icon">🚀</div>
-          <h3>Scalable Solutions</h3>
         </div>
       </div>
     </section>
@@ -2045,7 +2196,7 @@
       <div class="section-header-center">
         <h2 class="section-title">Featured Projects</h2>
         <p class="section-sub">
-          Real work built for real businesses — from Nairobi and beyond.
+          Real work built for real businesses, from Nairobi and beyond.
         </p>
       </div>
       <div class="projects-grid">
@@ -2063,15 +2214,15 @@
                 href="https://tembotours-one.vercel.app/"
                 target="_blank"
                 class="preview-btn"
-                >View Live ↗</a
+                >View Live</a
               >
             </div>
           </div>
           <div class="project-body">
             <div class="project-tag-row">
-              <span class="project-tag">Landing Page</span
-              ><span class="project-tag">Safari & Tours</span
-              ><span class="project-tag">Next.js</span>
+              <span class="project-tag">Landing Page</span>
+              <span class="project-tag">Safari and Tours</span>
+              <span class="project-tag">Next.js</span>
             </div>
             <h3>Tembo Tours</h3>
             <p>
@@ -2083,7 +2234,7 @@
               href="https://tembotours-one.vercel.app/"
               target="_blank"
               class="project-link"
-              >Visit site →</a
+              >Visit site</a
             >
           </div>
         </div>
@@ -2101,27 +2252,27 @@
                 href="https://smart-cv-builder-pro.vercel.app/pages/landing.html"
                 target="_blank"
                 class="preview-btn"
-                >View Live ↗</a
+                >View Live</a
               >
             </div>
           </div>
           <div class="project-body">
             <div class="project-tag-row">
-              <span class="project-tag">SaaS Landing</span
-              ><span class="project-tag">AI Product</span
-              ><span class="project-tag">Dark UI</span>
+              <span class="project-tag">SaaS Landing</span>
+              <span class="project-tag">AI Product</span>
+              <span class="project-tag">Dark UI</span>
             </div>
             <h3>SmartCV Builder</h3>
             <p>
               An AI-powered resume builder landing page with ATS-optimised
-              output — sleek dark theme, animated type, and clear conversion
+              output, sleek dark theme, animated type, and clear conversion
               CTAs.
             </p>
             <a
               href="https://smart-cv-builder-pro.vercel.app/pages/landing.html"
               target="_blank"
               class="project-link"
-              >Visit site →</a
+              >Visit site</a
             >
           </div>
         </div>
@@ -2139,27 +2290,27 @@
                 href="https://skylinetreats.vercel.app/"
                 target="_blank"
                 class="preview-btn"
-                >View Live ↗</a
+                >View Live</a
               >
             </div>
           </div>
           <div class="project-body">
             <div class="project-tag-row">
-              <span class="project-tag">Food & Beverage</span
-              ><span class="project-tag">E-Commerce</span
-              ><span class="project-tag">Nairobi</span>
+              <span class="project-tag">Food and Beverage</span>
+              <span class="project-tag">E-Commerce</span>
+              <span class="project-tag">Nairobi</span>
             </div>
             <h3>Skyline Treats</h3>
             <p>
-              Nairobi's favourite fast food brand — bold dark landing page with
-              golden accents, food photography grid, and an "Order Now"
-              conversion flow.
+              Nairobi's favourite fast food brand, bold dark landing page with
+              golden accents, food photography grid, and an order conversion
+              flow.
             </p>
             <a
               href="https://skylinetreats.vercel.app/"
               target="_blank"
               class="project-link"
-              >Visit site →</a
+              >Visit site</a
             >
           </div>
         </div>
@@ -2177,27 +2328,26 @@
                 href="https://business-card-generator-three.vercel.app/"
                 target="_blank"
                 class="preview-btn"
-                >View Live ↗</a
+                >View Live</a
               >
             </div>
           </div>
           <div class="project-body">
             <div class="project-tag-row">
-              <span class="project-tag">React</span
-              ><span class="project-tag">Tailwind CSS</span
-              ><span class="project-tag">Tool</span>
+              <span class="project-tag">React</span>
+              <span class="project-tag">Tailwind CSS</span>
+              <span class="project-tag">Tool</span>
             </div>
             <h3>Business Card Generator</h3>
             <p>
               Fill in your details and get a live preview that updates as you
-              type — then download a high-resolution PNG business card
-              instantly.
+              type, then download a high-resolution PNG business card instantly.
             </p>
             <a
               href="https://business-card-generator-three.vercel.app/"
               target="_blank"
               class="project-link"
-              >Visit site →</a
+              >Visit site</a
             >
           </div>
         </div>
@@ -2210,30 +2360,32 @@
         <div class="tech-stack-text">
           <h2 class="section-title">Built With The Best Stack</h2>
           <p>
-            From pixel-perfect frontend to robust backends — I work across the
+            From pixel-perfect frontend to robust backends, I work across the
             full spectrum of modern web technologies to deliver fast, scalable,
             production-ready solutions.
           </p>
           <div class="tech-categories">
             <div class="tech-cat-pill">
-              <span class="tech-cat-dot" style="background: #61dafb"></span
-              >Frontend — React, Next.js, TypeScript, Tailwind
+              <span class="tech-cat-dot" style="background: #61dafb"></span>
+              Frontend: React, Next.js, TypeScript, Tailwind
             </div>
             <div class="tech-cat-pill">
-              <span class="tech-cat-dot" style="background: #3776ab"></span
-              >Backend — Django, Node.js, REST APIs
+              <span class="tech-cat-dot" style="background: #3776ab"></span>
+              Backend: Django, Node.js, REST APIs
             </div>
             <div class="tech-cat-pill">
-              <span class="tech-cat-dot" style="background: #47a248"></span
-              >Database — MongoDB, PostgreSQL, Firebase
+              <span class="tech-cat-dot" style="background: #47a248"></span>
+              Database: MongoDB, PostgreSQL, Firebase
             </div>
             <div class="tech-cat-pill">
-              <span class="tech-cat-dot" style="background: #7c3aed"></span
-              >Tools — Figma, Git, Vercel, Supabase
+              <span class="tech-cat-dot" style="background: #7c3aed"></span>
+              Tools: Figma, Git, Vercel, Supabase
             </div>
           </div>
         </div>
         <div class="big-orbit-wrap">
+          <div class="big-glow-spread"></div>
+          <div class="big-glow-core"></div>
           <div class="big-orbit-center">
             <div class="big-orbit-center-text">Full<br />Stack</div>
           </div>
@@ -2241,138 +2393,252 @@
           <!-- Ring 1 -->
           <div class="big-ring big-ring-1">
             <div class="big-tech-logo bp-1">
-              <span class="t-icon">⚛️</span><span class="t-name">React</span>
+              <span class="t-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                  <circle cx="12" cy="12" r="2.5" fill="#61DAFB" />
+                  <ellipse
+                    cx="12"
+                    cy="12"
+                    rx="9"
+                    ry="3.5"
+                    stroke="#61DAFB"
+                    stroke-width="1.3"
+                    fill="none"
+                  />
+                  <ellipse
+                    cx="12"
+                    cy="12"
+                    rx="9"
+                    ry="3.5"
+                    stroke="#61DAFB"
+                    stroke-width="1.3"
+                    fill="none"
+                    transform="rotate(60 12 12)"
+                  />
+                  <ellipse
+                    cx="12"
+                    cy="12"
+                    rx="9"
+                    ry="3.5"
+                    stroke="#61DAFB"
+                    stroke-width="1.3"
+                    fill="none"
+                    transform="rotate(-60 12 12)"
+                  />
+                </svg>
+              </span>
+              <span class="t-name">React</span>
             </div>
             <div class="big-tech-logo bp-2">
-              <span class="t-icon">🐍</span><span class="t-name">Python</span>
+              <span class="t-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"
+                    fill="#3776AB"
+                  />
+                  <path
+                    d="M9 15.5c.3.5.8.8 1.5.8.8 0 1.2-.4 1.2-1V10h1.5v5.2c0 1.5-.9 2.4-2.5 2.4-1.2 0-2-.6-2.5-1.5L9 15.5zM14.5 15.3c.4.5.9.8 1.6.8.7 0 1.1-.3 1.1-.8 0-.6-.4-.9-1.2-1.2l-.4-.2c-1.2-.5-1.9-1.2-1.9-2.5 0-1.2.9-2.1 2.4-2.1 1 0 1.8.3 2.3 1.3l-1.3.8c-.3-.5-.6-.7-1-.7s-.8.3-.8.6c0 .4.3.6 1 .9l.4.2c1.4.6 2.2 1.3 2.2 2.7 0 1.5-1.2 2.3-2.7 2.3-1.5 0-2.5-.8-3-1.8l1.3-.8z"
+                    fill="white"
+                  />
+                </svg>
+              </span>
+              <span class="t-name">Python</span>
             </div>
             <div class="big-tech-logo bp-3">
-              <span class="t-icon">🟦</span
-              ><span class="t-name">TypeScript</span>
+              <span class="t-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M12 2L2 7v10l10 5 10-5V7L12 2z"
+                    fill="#1ABCFE"
+                    stroke="#1ABCFE"
+                    stroke-width="0.3"
+                  />
+                  <path d="M12 2L2 7l10 5 10-5L12 2z" fill="#0ACF83" />
+                  <path d="M12 12L2 7v10l10 5V12z" fill="#FF7262" />
+                  <path d="M12 12l10-5v10l-10 5V12z" fill="#A259FF" />
+                </svg>
+              </span>
+              <span class="t-name">Figma</span>
             </div>
           </div>
 
           <!-- Ring 2 -->
           <div class="big-ring big-ring-2">
             <div class="big-tech-logo bp-1">
-              <span class="t-icon">▲</span><span class="t-name">Next.js</span>
+              <span class="t-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                  <path d="M12 2L3 7v5l9 5 9-5V7L12 2z" fill="#000" />
+                  <path
+                    d="M3 7l9 5 9-5M12 12v10"
+                    stroke="white"
+                    stroke-width="1.2"
+                  />
+                </svg>
+              </span>
+              <span class="t-name">Next.js</span>
             </div>
             <div class="big-tech-logo bp-2">
-              <span class="t-icon">🌿</span><span class="t-name">MongoDB</span>
+              <span class="t-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                  <circle cx="12" cy="12" r="10" fill="#47A248" />
+                  <path d="M8 9h8v2H8V9zm0 4h5v2H8v-2z" fill="white" />
+                </svg>
+              </span>
+              <span class="t-name">MongoDB</span>
             </div>
             <div class="big-tech-logo bp-3">
-              <span class="t-icon">🎨</span><span class="t-name">Figma</span>
+              <span class="t-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                  <rect
+                    x="3"
+                    y="3"
+                    width="18"
+                    height="18"
+                    rx="2"
+                    fill="#F24E1E"
+                  />
+                  <path
+                    d="M8 8h8v2H8V8zm0 3h6v2H8v-2zm0 3h8v2H8v-2z"
+                    fill="white"
+                  />
+                </svg>
+              </span>
+              <span class="t-name">Figma</span>
             </div>
             <div class="big-tech-logo bp-4">
-              <span class="t-icon">☁️</span><span class="t-name">Vercel</span>
+              <span class="t-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                  <rect x="2" y="2" width="20" height="20" rx="3" fill="#000" />
+                  <path
+                    d="M12 7l-7 3.5v3L12 17l7-3.5v-3L12 7z"
+                    stroke="white"
+                    stroke-width="1.2"
+                    fill="none"
+                  />
+                </svg>
+              </span>
+              <span class="t-name">Vercel</span>
             </div>
           </div>
 
           <!-- Ring 3 -->
           <div class="big-ring big-ring-3">
             <div class="big-tech-logo bp-1">
-              <span class="t-icon">🐘</span><span class="t-name">Django</span>
+              <span class="t-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                  <rect
+                    x="2"
+                    y="2"
+                    width="20"
+                    height="20"
+                    rx="3"
+                    fill="#0C4B33"
+                  />
+                  <path
+                    d="M7 8h10v2H7V8zm0 3h7v2H7v-2zm0 3h10v2H7v-2z"
+                    fill="#44B78B"
+                  />
+                </svg>
+              </span>
+              <span class="t-name">Django</span>
             </div>
             <div class="big-tech-logo bp-2">
-              <span class="t-icon">🔥</span><span class="t-name">Firebase</span>
+              <span class="t-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M12 2.5L4 7v10l8 4.5 8-4.5V7L12 2.5z"
+                    fill="#FFA611"
+                  />
+                  <path
+                    d="M12 2.5v18.5M4 7l8 4.5 8-4.5"
+                    stroke="#FF6D00"
+                    stroke-width="0.8"
+                  />
+                </svg>
+              </span>
+              <span class="t-name">Firebase</span>
             </div>
             <div class="big-tech-logo bp-3">
-              <span class="t-icon">🐙</span><span class="t-name">GitHub</span>
+              <span class="t-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.17 6.839 9.49.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836a9.59 9.59 0 012.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.167 22 16.418 22 12c0-5.523-4.477-10-10-10z"
+                    fill="#181717"
+                  />
+                </svg>
+              </span>
+              <span class="t-name">GitHub</span>
             </div>
             <div class="big-tech-logo bp-4">
-              <span class="t-icon">🐬</span><span class="t-name">MySQL</span>
+              <span class="t-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                  <ellipse cx="12" cy="7" rx="8" ry="3" fill="#00618A" />
+                  <path
+                    d="M4 7v4c0 1.66 3.58 3 8 3s8-1.34 8-3V7"
+                    fill="#00618A"
+                    opacity="0.8"
+                  />
+                  <path
+                    d="M4 11v4c0 1.66 3.58 3 8 3s8-1.34 8-3v-4"
+                    fill="#0174BE"
+                    opacity="0.6"
+                  />
+                </svg>
+              </span>
+              <span class="t-name">MySQL</span>
             </div>
             <div class="big-tech-logo bp-5">
-              <span class="t-icon">💠</span><span class="t-name">CSS</span>
+              <span class="t-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                  <rect
+                    x="2"
+                    y="2"
+                    width="20"
+                    height="20"
+                    rx="3"
+                    fill="#264DE4"
+                  />
+                  <path
+                    d="M5 5l1.5 12L12 19l5.5-2L19 5H5zm11.5 3H8l.2 2h8l-.6 5.5L12 17l-3.6-1.5L8.1 12h2l.2 1.5 1.7.5 1.7-.5.2-2.5H8l-.5-4h9l-.5 2.5z"
+                    fill="white"
+                  />
+                </svg>
+              </span>
+              <span class="t-name">CSS</span>
             </div>
             <div class="big-tech-logo bp-6">
-              <span class="t-icon">🟨</span
-              ><span class="t-name">JavaScript</span>
+              <span class="t-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                  <rect
+                    x="2"
+                    y="2"
+                    width="20"
+                    height="20"
+                    rx="3"
+                    fill="#F7DF1E"
+                  />
+                  <path
+                    d="M8 17.5c.3.4.7.7 1.5.7.8 0 1.2-.4 1.2-.9V10h1.8v7.4c0 1.7-1 2.6-2.7 2.6-1.4 0-2.2-.7-2.7-1.6l1-.9zM14.5 17.3c.4.5 1 .9 2 .9.9 0 1.3-.4 1.3-1 0-.7-.5-1-1.5-1.4l-.5-.2c-1.4-.6-2.3-1.4-2.3-3 0-1.5 1.1-2.6 2.9-2.6 1.3 0 2.2.4 2.8 1.5l-1 .9c-.3-.6-.7-.9-1.3-.9-.6 0-.9.3-.9.8 0 .5.3.8 1.2 1.1l.5.2c1.6.7 2.5 1.5 2.5 3.1 0 1.8-1.4 2.8-3.3 2.8-1.9 0-3.1-1-3.7-2.2l1.3-.9z"
+                    fill="#323330"
+                  />
+                </svg>
+              </span>
+              <span class="t-name">JavaScript</span>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- PROCESS -->
-    <section class="process" id="process">
-      <div class="section-header-center">
-        <h2 class="section-title">Our Simple 3-Step Process</h2>
-        <p class="section-sub">
-          From your first message to a live website — fast, clear, and
-          stress-free.
-        </p>
-      </div>
-      <div class="process-steps">
-        <div class="process-step">
-          <div class="step-icon">📞</div>
-          <h3>1. Discovery Call</h3>
-        </div>
-        <div class="process-step">
-          <div class="step-icon">📄</div>
-          <h3>2. Proposal & MVP</h3>
-        </div>
-        <div class="process-step">
-          <div class="step-icon">🚀</div>
-          <h3>3. Delivery & Support</h3>
-        </div>
-      </div>
-    </section>
-
-    <!-- SKILLS BARS -->
+    <!-- SKILLS CARDS -->
     <section style="background: var(--bg); padding: 6rem 5%">
       <div class="skills-layout">
         <div>
           <h2 class="section-title">What My Skills Include</h2>
-          <p class="section-sub" style="margin-bottom: 2.5rem">
+          <p class="section-sub">
             A versatile skill set across engineering, design, and product
             development.
           </p>
-          <div class="skill-group">
-            <div class="skill-row">
-              <span class="skill-name">Javascript / React / Next.js</span
-              ><span class="skill-pct">88%</span>
-            </div>
-            <div class="skill-track">
-              <div class="skill-fill" style="width: 88%"></div>
-            </div>
-          </div>
-          <div class="skill-group">
-            <div class="skill-row">
-              <span class="skill-name">UI/UX Design (Figma)</span
-              ><span class="skill-pct">85%</span>
-            </div>
-            <div class="skill-track">
-              <div class="skill-fill" style="width: 85%"></div>
-            </div>
-          </div>
-          <div class="skill-group">
-            <div class="skill-row">
-              <span class="skill-name">HTML / CSS</span
-              ><span class="skill-pct">95%</span>
-            </div>
-            <div class="skill-track">
-              <div class="skill-fill" style="width: 95%"></div>
-            </div>
-          </div>
-          <div class="skill-group">
-            <div class="skill-row">
-              <span class="skill-name">Django / Python</span
-              ><span class="skill-pct">80%</span>
-            </div>
-            <div class="skill-track">
-              <div class="skill-fill" style="width: 80%"></div>
-            </div>
-          </div>
-          <div class="skill-group">
-            <div class="skill-row">
-              <span class="skill-name">Git / DevOps</span
-              ><span class="skill-pct">78%</span>
-            </div>
-            <div class="skill-track">
-              <div class="skill-fill" style="width: 78%"></div>
-            </div>
-          </div>
         </div>
         <div class="skills-cards">
           <div class="skill-card">
@@ -2389,7 +2655,7 @@
           <div class="skill-card">
             <h4>Frontend Dev</h4>
             <p>
-              React, Next.js, TypeScript — pixel-perfect, high-performance UIs.
+              React, Next.js, TypeScript: pixel-perfect, high-performance UIs.
             </p>
           </div>
           <div class="skill-card">
@@ -2403,147 +2669,91 @@
       </div>
     </section>
 
-    <!-- PRICING -->
+    <!-- PRICING (table only) -->
     <section class="pricing" id="pricing">
       <div class="section-header-center">
         <h2 class="section-title">Simple, Transparent Pricing</h2>
         <p class="section-sub">
-          Packages designed for Kenyan SMEs — no hidden fees, no back-and-forth.
+          Packages designed for Kenyan SMEs, no hidden fees, no back-and-forth.
         </p>
       </div>
-      <div class="pricing-grid">
-        <div class="pricing-card">
-          <h3>Starter</h3>
-          <p class="plan-desc">
-            Ideal for small businesses or personal websites just getting online.
-          </p>
-          <div class="price"><span class="currency">KES </span>30,000</div>
-          <p class="price-note">one-time payment</p>
-          <ul class="pricing-features">
-            <li>5 Page Custom Website</li>
-            <li>Mobile Responsive Design</li>
-            <li>Contact Form & Basic SEO</li>
-            <li>Social Media Integration</li>
-            <li>Basic Security Setup</li>
-            <li>1 Month Support</li>
-            <li>2 Free Revisions</li>
-          </ul>
-          <a href="#contact" class="pricing-btn">Get Quote</a>
-        </div>
-        <div class="pricing-card featured">
-          <div class="pricing-badge">Most Popular</div>
-          <h3>Business</h3>
-          <p class="plan-desc">
-            Optimized for growing SMEs and service businesses ready to scale.
-          </p>
-          <div class="price"><span class="currency">KES </span>60,000</div>
-          <p class="price-note">one-time payment</p>
-          <ul class="pricing-features">
-            <li>Everything in Starter</li>
-            <li>Up to 10 Pages with Blog</li>
-            <li>CMS Integration</li>
-            <li>Advanced SEO & Analytics</li>
-            <li>Marketing Tools</li>
-            <li>Enhanced Security</li>
-            <li>3 Months Support</li>
-            <li>10 Free Revisions</li>
-          </ul>
-          <a href="#contact" class="pricing-btn featured-btn">Get Quote</a>
-        </div>
-        <div class="pricing-card">
-          <h3>Scale</h3>
-          <p class="plan-desc">
-            Comprehensive solution for businesses needing e-commerce & payments.
-          </p>
-          <div class="price"><span class="currency">KES </span>80,000</div>
-          <p class="price-note">one-time payment</p>
-          <ul class="pricing-features">
-            <li>Everything in Business</li>
-            <li>Full E-Commerce Store</li>
-            <li>M-Pesa & Card Payments</li>
-            <li>Advanced Marketing & Automation</li>
-            <li>CRM Integration</li>
-            <li>Premium Security & Backup</li>
-            <li>1 Year Priority Support</li>
-            <li>Unlimited Revisions</li>
-          </ul>
-          <a href="#contact" class="pricing-btn">Get Quote</a>
-        </div>
+      <h3
+        style="
+          font-family: &quot;Bricolage Grotesque&quot;, sans-serif;
+          font-weight: 800;
+          font-size: 1.2rem;
+          margin-bottom: 1.2rem;
+          color: var(--text);
+        "
+      >
+        Full Service Catalogue
+      </h3>
+      <div class="pricing-table-wrap">
+        <table class="pricing-table">
+          <thead>
+            <tr>
+              <th>Service</th>
+              <th>Price (KES)</th>
+              <th>Key Features</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Basic Website</td>
+              <td>15,000 to 50,000</td>
+              <td style="color: var(--text-muted); font-weight: 400">
+                3 to 5 pages, Responsive, SEO optimized, Contact form
+              </td>
+            </tr>
+            <tr>
+              <td>Business Website</td>
+              <td>50,000 to 120,000</td>
+              <td style="color: var(--text-muted); font-weight: 400">
+                5 to 10 pages, CMS, SEO, Analytics integration
+              </td>
+            </tr>
+            <tr>
+              <td>E-Commerce Store</td>
+              <td>80,000 to 250,000+</td>
+              <td style="color: var(--text-muted); font-weight: 400">
+                Product listings, Cart, M-Pesa, Admin dashboard
+              </td>
+            </tr>
+            <tr>
+              <td>Web Application</td>
+              <td>150,000 to 800,000+</td>
+              <td style="color: var(--text-muted); font-weight: 400">
+                User auth, REST APIs, Dashboard, Database
+              </td>
+            </tr>
+            <tr>
+              <td>Landing Page</td>
+              <td>15,000 to 35,000</td>
+              <td style="color: var(--text-muted); font-weight: 400">
+                Single page, Clear CTA, Lead capture form
+              </td>
+            </tr>
+            <tr>
+              <td>Maintenance</td>
+              <td>3,000 to 15,000/mo</td>
+              <td style="color: var(--text-muted); font-weight: 400">
+                Regular updates, Bug fixes, Backups and monitoring
+              </td>
+            </tr>
+            <tr>
+              <td>Domain and Hosting</td>
+              <td>1,000 to 60,000/yr</td>
+              <td style="color: var(--text-muted); font-weight: 400">
+                Domain registration, Hosting setup and configuration
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-      <div style="margin-top: 3rem">
-        <h3
-          style="
-            font-family: &quot;Bricolage Grotesque&quot;, sans-serif;
-            font-weight: 800;
-            font-size: 1.2rem;
-            margin-bottom: 1.2rem;
-            color: var(--text);
-          "
+      <div style="margin-top: 2rem; text-align: center">
+        <a href="#contact" class="btn-primary" style="display: inline-block"
+          >Get a Custom Quote</a
         >
-          Full Service Catalogue
-        </h3>
-        <div class="pricing-table-wrap">
-          <table class="pricing-table">
-            <thead>
-              <tr>
-                <th>Service</th>
-                <th>Price (KES)</th>
-                <th>Key Features</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Basic Website</td>
-                <td>15,000 – 50,000</td>
-                <td style="color: var(--text-muted); font-weight: 400">
-                  3–5 pages, Responsive, SEO optimized, Contact form
-                </td>
-              </tr>
-              <tr>
-                <td>Business Website</td>
-                <td>50,000 – 120,000</td>
-                <td style="color: var(--text-muted); font-weight: 400">
-                  5–10 pages, CMS, SEO, Analytics integration
-                </td>
-              </tr>
-              <tr>
-                <td>E-Commerce Store</td>
-                <td>80,000 – 250,000+</td>
-                <td style="color: var(--text-muted); font-weight: 400">
-                  Product listings, Cart, M-Pesa, Admin dashboard
-                </td>
-              </tr>
-              <tr>
-                <td>Web Application</td>
-                <td>150,000 – 800,000+</td>
-                <td style="color: var(--text-muted); font-weight: 400">
-                  User auth, REST APIs, Dashboard, Database
-                </td>
-              </tr>
-              <tr>
-                <td>Landing Page</td>
-                <td>15,000 – 35,000</td>
-                <td style="color: var(--text-muted); font-weight: 400">
-                  Single page, Clear CTA, Lead capture form
-                </td>
-              </tr>
-              <tr>
-                <td>Maintenance</td>
-                <td>3,000 – 15,000/mo</td>
-                <td style="color: var(--text-muted); font-weight: 400">
-                  Regular updates, Bug fixes, Backups & monitoring
-                </td>
-              </tr>
-              <tr>
-                <td>Domain & Hosting</td>
-                <td>1,000 – 60,000/yr</td>
-                <td style="color: var(--text-muted); font-weight: 400">
-                  Domain registration, Hosting setup & configuration
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
       </div>
     </section>
 
@@ -2558,7 +2768,7 @@
           <p>
             Telvin delivered an outstanding product that exceeded our
             expectations. The attention to detail and creative approach was
-            remarkable — truly a 10/10 experience.
+            remarkable, truly a 10/10 experience.
           </p>
           <div class="testimonial-author">
             <div class="author-avatar">WK</div>
@@ -2620,27 +2830,65 @@
             life. Fill out the form or reach out directly via WhatsApp.
           </p>
           <div class="contact-item">
-            <div class="contact-icon">✉️</div>
+            <div class="contact-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                  stroke="#7c3aed"
+                  stroke-width="1.8"
+                />
+                <path
+                  d="M22 6l-10 7L2 6"
+                  stroke="#7c3aed"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                />
+              </svg>
+            </div>
             <div class="contact-item-text">
-              <label>Email</label
-              ><a href="mailto:skylinecodes96@gmail.com"
+              <label>Email</label>
+              <a href="mailto:skylinecodes96@gmail.com"
                 >skylinecodes96@gmail.com</a
               >
             </div>
           </div>
           <div class="contact-item">
-            <div class="contact-icon">📱</div>
+            <div class="contact-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8a19.79 19.79 0 01-3.07-8.68A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92v2z"
+                  stroke="#7c3aed"
+                  stroke-width="1.8"
+                />
+              </svg>
+            </div>
             <div class="contact-item-text">
-              <label>WhatsApp</label
-              ><a href="https://wa.me/254796560921" target="_blank"
+              <label>WhatsApp</label>
+              <a href="https://wa.me/254796560921" target="_blank"
                 >+254 796 560 921</a
               >
             </div>
           </div>
           <div class="contact-item">
-            <div class="contact-icon">📍</div>
+            <div class="contact-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"
+                  stroke="#7c3aed"
+                  stroke-width="1.8"
+                />
+                <circle
+                  cx="12"
+                  cy="10"
+                  r="3"
+                  stroke="#7c3aed"
+                  stroke-width="1.8"
+                />
+              </svg>
+            </div>
             <div class="contact-item-text">
-              <label>Location</label><span>Nairobi, Kenya</span>
+              <label>Location</label>
+              <span>Nairobi, Kenya</span>
             </div>
           </div>
         </div>
@@ -2723,13 +2971,15 @@
         </div>
         <div class="footer-col">
           <h4>Quick Links</h4>
-          <a href="#services">Services</a><a href="#work">Work</a
-          ><a href="#about">About</a><a href="#process">Process</a
-          ><a href="#pricing">Pricing</a>
+          <a href="#services">Services</a>
+          <a href="#work">Work</a>
+          <a href="#about">About</a>
+          <a href="#pricing">Pricing</a>
         </div>
         <div class="footer-col">
           <h4>Legal</h4>
-          <a href="#">Privacy Policy</a><a href="#">Terms of Service</a>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
         </div>
         <div class="footer-col">
           <h4>Contact</h4>
@@ -2741,7 +2991,7 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <p>© 2026 Telvin Murimi. All rights reserved.</p>
+        <p>2026 Telvin Murimi. All rights reserved.</p>
         <div class="footer-socials">
           <a href="https://github.com/TranquilTelvin" target="_blank">GH</a>
           <a href="https://www.linkedin.com/in/telvin-murimi" target="_blank"
