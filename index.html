@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Telvin Murimi Developer & Designer</title>
+    <title>Telvin Murimi Developer &amp; Designer</title>
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
@@ -67,7 +67,6 @@
         letter-spacing: 0.012em;
       }
 
-      /* NAV */
       nav {
         position: fixed;
         top: 14px;
@@ -214,7 +213,6 @@
         font-weight: 500;
       }
 
-      /* HERO */
       .hero {
         min-height: 100vh;
         display: flex;
@@ -371,7 +369,6 @@
         color: var(--purple-light);
       }
 
-      /* HERO VISUAL - ORBIT */
       .hero-visual {
         flex-shrink: 0;
         position: relative;
@@ -521,7 +518,6 @@
           transform: rotate(360deg);
         }
       }
-
       @keyframes spin-ccw {
         from {
           transform: rotate(0deg);
@@ -652,7 +648,6 @@
         color: var(--text-dim);
       }
 
-      /* STATS */
       .stats-bar {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
@@ -668,7 +663,6 @@
         text-align: center;
         border-right: 1px solid var(--border);
       }
-
       .stat-item:last-child {
         border-right: none;
       }
@@ -687,7 +681,6 @@
         margin-top: 0.3rem;
       }
 
-      /* SECTIONS */
       section {
         padding: 6rem 5%;
         position: relative;
@@ -716,12 +709,10 @@
         text-align: center;
         margin-bottom: 3.5rem;
       }
-
       .section-header-center .section-sub {
         margin: 0.5rem auto 0;
       }
 
-      /* SERVICES */
       .services {
         background: var(--bg2);
       }
@@ -778,7 +769,6 @@
         line-height: 1.8;
       }
 
-      /* PORTFOLIO */
       .portfolio {
         background: var(--bg2);
       }
@@ -789,7 +779,7 @@
         gap: 1.5rem;
       }
 
-      /* ── DARK CARDS ── */
+      /* DARK CARDS */
       .project-card {
         border-radius: 24px;
         overflow: hidden;
@@ -802,14 +792,6 @@
         display: flex;
         flex-direction: column;
         position: relative;
-      }
-
-      .project-card:hover {
-        transform: translateY(-8px);
-        border-color: rgba(124, 58, 237, 0.5);
-        box-shadow:
-          0 8px 40px rgba(124, 58, 237, 0.22),
-          0 0 0 1px rgba(124, 58, 237, 0.12);
       }
 
       .project-card.featured {
@@ -849,31 +831,16 @@
         position: absolute;
         top: 0;
         left: 0;
-        transition: transform 0.6s ease;
-      }
-
-      .project-card:hover .project-preview iframe {
-        transform: scale(0.5) translateY(-20px);
       }
 
       .project-preview-overlay {
         position: absolute;
         inset: 0;
-        background: linear-gradient(
-          180deg,
-          transparent 30%,
-          rgba(10, 5, 20, 0.7) 100%
-        );
-        opacity: 0;
-        transition: opacity 0.3s;
         display: flex;
         align-items: flex-end;
         justify-content: flex-start;
         padding: 1.5rem;
-      }
-
-      .project-card:hover .project-preview-overlay {
-        opacity: 1;
+        opacity: 0;
       }
 
       .preview-btn {
@@ -963,6 +930,206 @@
         gap: 10px;
       }
 
+      /* ---- PORTFOLIO LIVELY MOTION ---- */
+
+      @keyframes cardEntrance {
+        from {
+          opacity: 0;
+          transform: translateY(40px) scale(0.97);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+      .projects-grid .project-card {
+        animation: cardEntrance 0.65s cubic-bezier(0.22, 1, 0.36, 1) both;
+      }
+      .projects-grid .project-card:nth-child(1) {
+        animation-delay: 0.05s;
+      }
+      .projects-grid .project-card:nth-child(2) {
+        animation-delay: 0.18s;
+      }
+      .projects-grid .project-card:nth-child(3) {
+        animation-delay: 0.31s;
+      }
+      .projects-grid .project-card:nth-child(4) {
+        animation-delay: 0.44s;
+      }
+
+      .project-card::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          105deg,
+          transparent 40%,
+          rgba(124, 58, 237, 0.09) 50%,
+          transparent 60%
+        );
+        background-size: 200% 100%;
+        background-position: -100% 0;
+        transition: background-position 0.65s ease;
+        pointer-events: none;
+        border-radius: 24px;
+        z-index: 1;
+      }
+      .project-card:hover::after {
+        background-position: 200% 0;
+      }
+
+      .project-card .project-preview iframe {
+        transition: transform 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      }
+      .project-card:hover .project-preview iframe {
+        transform: scale(0.5) translateY(-60px);
+      }
+
+      .project-preview-overlay {
+        background: linear-gradient(
+          180deg,
+          transparent 0%,
+          rgba(10, 5, 20, 0.3) 50%,
+          rgba(10, 5, 20, 0.85) 100%
+        );
+        transform: translateY(12px);
+        transition:
+          opacity 0.35s,
+          transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+      .project-card:hover .project-preview-overlay {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      @keyframes borderPulse {
+        0%,
+        100% {
+          box-shadow:
+            0 8px 40px rgba(124, 58, 237, 0.22),
+            0 0 0 1px rgba(124, 58, 237, 0.12);
+        }
+        50% {
+          box-shadow:
+            0 14px 55px rgba(124, 58, 237, 0.4),
+            0 0 0 2px rgba(124, 58, 237, 0.28);
+        }
+      }
+      .project-card:hover {
+        animation: borderPulse 1.8s ease-in-out infinite;
+        transform: translateY(-8px);
+      }
+
+      @keyframes badgeBounce {
+        0% {
+          transform: scale(0) rotate(-20deg);
+          opacity: 0;
+        }
+        70% {
+          transform: scale(1.2) rotate(4deg);
+        }
+        100% {
+          transform: scale(1) rotate(0deg);
+          opacity: 1;
+        }
+      }
+      .project-num {
+        animation: badgeBounce 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+      }
+      .projects-grid .project-card:nth-child(1) .project-num {
+        animation-delay: 0.25s;
+      }
+      .projects-grid .project-card:nth-child(2) .project-num {
+        animation-delay: 0.38s;
+      }
+      .projects-grid .project-card:nth-child(3) .project-num {
+        animation-delay: 0.51s;
+      }
+      .projects-grid .project-card:nth-child(4) .project-num {
+        animation-delay: 0.64s;
+      }
+
+      @keyframes tagPulse {
+        0%,
+        100% {
+          background: rgba(124, 58, 237, 0.15);
+        }
+        50% {
+          background: rgba(124, 58, 237, 0.3);
+        }
+      }
+      .project-card:hover .project-tag {
+        animation: tagPulse 1.4s ease-in-out infinite;
+      }
+      .project-card:hover .project-tag:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+      .project-card:hover .project-tag:nth-child(3) {
+        animation-delay: 0.4s;
+      }
+
+      .project-body h3 {
+        display: inline-block;
+        position: relative;
+      }
+      .project-body h3::after {
+        content: "";
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 0;
+        height: 1.5px;
+        background: #a78bfa;
+        transition: width 0.3s ease;
+      }
+      .project-card:hover .project-body h3::after {
+        width: 100%;
+      }
+
+      @keyframes projectLinkArrow {
+        0%,
+        100% {
+          transform: translateX(0);
+        }
+        50% {
+          transform: translateX(5px);
+        }
+      }
+      .project-card:hover .project-link {
+        animation: projectLinkArrow 0.8s ease-in-out infinite;
+      }
+
+      .project-preview::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(124, 58, 237, 0.7),
+          transparent
+        );
+        z-index: 3;
+        opacity: 0;
+        top: 0;
+        pointer-events: none;
+      }
+      .project-card:hover .project-preview::before {
+        opacity: 1;
+        animation: scanLine 1.6s linear infinite;
+      }
+      @keyframes scanLine {
+        0% {
+          top: 0;
+        }
+        100% {
+          top: 100%;
+        }
+      }
+
       /* TECH STACK SECTION */
       .tech-stack-section {
         background: var(--bg);
@@ -1037,14 +1204,12 @@
         border-color: var(--purple);
         color: var(--purple);
       }
-
       .tech-cat-dot {
         width: 8px;
         height: 8px;
         border-radius: 50%;
       }
 
-      /* BIG ORBIT */
       .big-orbit-wrap {
         position: relative;
         width: 460px;
@@ -1233,7 +1398,6 @@
         justify-content: center;
         line-height: 1;
       }
-
       .big-tech-logo .t-name {
         font-size: 0.58rem;
         font-weight: 700;
@@ -1316,7 +1480,6 @@
         left: 10%;
       }
 
-      /* SKILLS */
       .skills {
         background: var(--bg);
       }
@@ -1364,7 +1527,6 @@
         line-height: 1.75;
       }
 
-      /* PRICING */
       .pricing {
         background: var(--bg2);
       }
@@ -1411,7 +1573,6 @@
         border-bottom: none;
       }
 
-      /* TESTIMONIALS */
       .testimonials {
         background: var(--bg);
       }
@@ -1484,7 +1645,6 @@
         color: var(--text-muted);
       }
 
-      /* CONTACT */
       .contact {
         background: var(--bg2);
       }
@@ -1622,7 +1782,6 @@
         transform: none;
       }
 
-      /* FOOTER */
       footer {
         background: var(--bg2);
         border-top: 1px solid var(--border);
@@ -1703,7 +1862,6 @@
         color: var(--purple-light);
       }
 
-      /* TOAST */
       .toast {
         position: fixed;
         bottom: 2rem;
@@ -1734,7 +1892,6 @@
         color: #fff;
       }
 
-      /* RESPONSIVE */
       @media (max-width: 1024px) {
         .services-grid {
           grid-template-columns: repeat(2, 1fr);
@@ -2228,13 +2385,7 @@
       <div class="services-grid">
         <div class="service-card">
           <div class="service-icon">
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
               <rect
                 x="2"
                 y="3"
@@ -2260,13 +2411,7 @@
         </div>
         <div class="service-card">
           <div class="service-icon">
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
               <path
                 d="M6 2h12a2 2 0 012 2v16a2 2 0 01-2 2H6a2 2 0 01-2-2V4a2 2 0 012-2z"
                 stroke="#7c3aed"
@@ -2288,13 +2433,7 @@
         </div>
         <div class="service-card">
           <div class="service-icon">
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
               <path
                 d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3-3a1 1 0 000-1.4l-1.6-1.6a1 1 0 00-1.4 0l-3 3z"
                 stroke="#7c3aed"
@@ -2322,13 +2461,7 @@
         </div>
         <div class="service-card">
           <div class="service-icon">
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
               <path
                 d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"
                 stroke="#7c3aed"
@@ -2549,11 +2682,10 @@
             <div class="big-orbit-center-text">Full<br />Stack</div>
           </div>
 
-          <!-- Ring 1 -->
           <div class="big-ring big-ring-1">
             <div class="big-tech-logo bp-1">
-              <span class="t-icon">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+              <span class="t-icon"
+                ><svg width="22" height="22" viewBox="0 0 24 24" fill="none">
                   <circle cx="12" cy="12" r="2.5" fill="#61DAFB" />
                   <ellipse
                     cx="12"
@@ -2583,14 +2715,13 @@
                     stroke-width="1.3"
                     fill="none"
                     transform="rotate(-60 12 12)"
-                  />
-                </svg>
-              </span>
+                  /></svg
+              ></span>
               <span class="t-name">React</span>
             </div>
             <div class="big-tech-logo bp-2">
-              <span class="t-icon">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+              <span class="t-icon"
+                ><svg width="22" height="22" viewBox="0 0 24 24" fill="none">
                   <path
                     d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"
                     fill="#3776AB"
@@ -2598,14 +2729,13 @@
                   <path
                     d="M9 15.5c.3.5.8.8 1.5.8.8 0 1.2-.4 1.2-1V10h1.5v5.2c0 1.5-.9 2.4-2.5 2.4-1.2 0-2-.6-2.5-1.5L9 15.5zM14.5 15.3c.4.5.9.8 1.6.8.7 0 1.1-.3 1.1-.8 0-.6-.4-.9-1.2-1.2l-.4-.2c-1.2-.5-1.9-1.2-1.9-2.5 0-1.2.9-2.1 2.4-2.1 1 0 1.8.3 2.3 1.3l-1.3.8c-.3-.5-.6-.7-1-.7s-.8.3-.8.6c0 .4.3.6 1 .9l.4.2c1.4.6 2.2 1.3 2.2 2.7 0 1.5-1.2 2.3-2.7 2.3-1.5 0-2.5-.8-3-1.8l1.3-.8z"
                     fill="white"
-                  />
-                </svg>
-              </span>
+                  /></svg
+              ></span>
               <span class="t-name">Python</span>
             </div>
             <div class="big-tech-logo bp-3">
-              <span class="t-icon">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+              <span class="t-icon"
+                ><svg width="22" height="22" viewBox="0 0 24 24" fill="none">
                   <path
                     d="M12 2L2 7v10l10 5 10-5V7L12 2z"
                     fill="#1ABCFE"
@@ -2614,40 +2744,36 @@
                   />
                   <path d="M12 2L2 7l10 5 10-5L12 2z" fill="#0ACF83" />
                   <path d="M12 12L2 7v10l10 5V12z" fill="#FF7262" />
-                  <path d="M12 12l10-5v10l-10 5V12z" fill="#A259FF" />
-                </svg>
-              </span>
+                  <path d="M12 12l10-5v10l-10 5V12z" fill="#A259FF" /></svg
+              ></span>
               <span class="t-name">Figma</span>
             </div>
           </div>
 
-          <!-- Ring 2 -->
           <div class="big-ring big-ring-2">
             <div class="big-tech-logo bp-1">
-              <span class="t-icon">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+              <span class="t-icon"
+                ><svg width="22" height="22" viewBox="0 0 24 24" fill="none">
                   <path d="M12 2L3 7v5l9 5 9-5V7L12 2z" fill="#000" />
                   <path
                     d="M3 7l9 5 9-5M12 12v10"
                     stroke="white"
                     stroke-width="1.2"
-                  />
-                </svg>
-              </span>
+                  /></svg
+              ></span>
               <span class="t-name">Next.js</span>
             </div>
             <div class="big-tech-logo bp-2">
-              <span class="t-icon">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+              <span class="t-icon"
+                ><svg width="22" height="22" viewBox="0 0 24 24" fill="none">
                   <circle cx="12" cy="12" r="10" fill="#47A248" />
-                  <path d="M8 9h8v2H8V9zm0 4h5v2H8v-2z" fill="white" />
-                </svg>
-              </span>
+                  <path d="M8 9h8v2H8V9zm0 4h5v2H8v-2z" fill="white" /></svg
+              ></span>
               <span class="t-name">MongoDB</span>
             </div>
             <div class="big-tech-logo bp-3">
-              <span class="t-icon">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+              <span class="t-icon"
+                ><svg width="22" height="22" viewBox="0 0 24 24" fill="none">
                   <rect
                     x="3"
                     y="3"
@@ -2659,32 +2785,29 @@
                   <path
                     d="M8 8h8v2H8V8zm0 3h6v2H8v-2zm0 3h8v2H8v-2z"
                     fill="white"
-                  />
-                </svg>
-              </span>
+                  /></svg
+              ></span>
               <span class="t-name">Figma</span>
             </div>
             <div class="big-tech-logo bp-4">
-              <span class="t-icon">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+              <span class="t-icon"
+                ><svg width="22" height="22" viewBox="0 0 24 24" fill="none">
                   <rect x="2" y="2" width="20" height="20" rx="3" fill="#000" />
                   <path
                     d="M12 7l-7 3.5v3L12 17l7-3.5v-3L12 7z"
                     stroke="white"
                     stroke-width="1.2"
                     fill="none"
-                  />
-                </svg>
-              </span>
+                  /></svg
+              ></span>
               <span class="t-name">Vercel</span>
             </div>
           </div>
 
-          <!-- Ring 3 -->
           <div class="big-ring big-ring-3">
             <div class="big-tech-logo bp-1">
-              <span class="t-icon">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+              <span class="t-icon"
+                ><svg width="22" height="22" viewBox="0 0 24 24" fill="none">
                   <rect
                     x="2"
                     y="2"
@@ -2696,14 +2819,13 @@
                   <path
                     d="M7 8h10v2H7V8zm0 3h7v2H7v-2zm0 3h10v2H7v-2z"
                     fill="#44B78B"
-                  />
-                </svg>
-              </span>
+                  /></svg
+              ></span>
               <span class="t-name">Django</span>
             </div>
             <div class="big-tech-logo bp-2">
-              <span class="t-icon">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+              <span class="t-icon"
+                ><svg width="22" height="22" viewBox="0 0 24 24" fill="none">
                   <path
                     d="M12 2.5L4 7v10l8 4.5 8-4.5V7L12 2.5z"
                     fill="#FFA611"
@@ -2712,25 +2834,23 @@
                     d="M12 2.5v18.5M4 7l8 4.5 8-4.5"
                     stroke="#FF6D00"
                     stroke-width="0.8"
-                  />
-                </svg>
-              </span>
+                  /></svg
+              ></span>
               <span class="t-name">Firebase</span>
             </div>
             <div class="big-tech-logo bp-3">
-              <span class="t-icon">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+              <span class="t-icon"
+                ><svg width="22" height="22" viewBox="0 0 24 24" fill="none">
                   <path
                     d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.17 6.839 9.49.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836a9.59 9.59 0 012.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.167 22 16.418 22 12c0-5.523-4.477-10-10-10z"
                     fill="#181717"
-                  />
-                </svg>
-              </span>
+                  /></svg
+              ></span>
               <span class="t-name">GitHub</span>
             </div>
             <div class="big-tech-logo bp-4">
-              <span class="t-icon">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+              <span class="t-icon"
+                ><svg width="22" height="22" viewBox="0 0 24 24" fill="none">
                   <ellipse cx="12" cy="7" rx="8" ry="3" fill="#00618A" />
                   <path
                     d="M4 7v4c0 1.66 3.58 3 8 3s8-1.34 8-3V7"
@@ -2741,14 +2861,13 @@
                     d="M4 11v4c0 1.66 3.58 3 8 3s8-1.34 8-3v-4"
                     fill="#0174BE"
                     opacity="0.6"
-                  />
-                </svg>
-              </span>
+                  /></svg
+              ></span>
               <span class="t-name">MySQL</span>
             </div>
             <div class="big-tech-logo bp-5">
-              <span class="t-icon">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+              <span class="t-icon"
+                ><svg width="22" height="22" viewBox="0 0 24 24" fill="none">
                   <rect
                     x="2"
                     y="2"
@@ -2760,14 +2879,13 @@
                   <path
                     d="M5 5l1.5 12L12 19l5.5-2L19 5H5zm11.5 3H8l.2 2h8l-.6 5.5L12 17l-3.6-1.5L8.1 12h2l.2 1.5 1.7.5 1.7-.5.2-2.5H8l-.5-4h9l-.5 2.5z"
                     fill="white"
-                  />
-                </svg>
-              </span>
+                  /></svg
+              ></span>
               <span class="t-name">CSS</span>
             </div>
             <div class="big-tech-logo bp-6">
-              <span class="t-icon">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+              <span class="t-icon"
+                ><svg width="22" height="22" viewBox="0 0 24 24" fill="none">
                   <rect
                     x="2"
                     y="2"
@@ -2779,9 +2897,8 @@
                   <path
                     d="M8 17.5c.3.4.7.7 1.5.7.8 0 1.2-.4 1.2-.9V10h1.8v7.4c0 1.7-1 2.6-2.7 2.6-1.4 0-2.2-.7-2.7-1.6l1-.9zM14.5 17.3c.4.5 1 .9 2 .9.9 0 1.3-.4 1.3-1 0-.7-.5-1-1.5-1.4l-.5-.2c-1.4-.6-2.3-1.4-2.3-3 0-1.5 1.1-2.6 2.9-2.6 1.3 0 2.2.4 2.8 1.5l-1 .9c-.3-.6-.7-.9-1.3-.9-.6 0-.9.3-.9.8 0 .5.3.8 1.2 1.1l.5.2c1.6.7 2.5 1.5 2.5 3.1 0 1.8-1.4 2.8-3.3 2.8-1.9 0-3.1-1-3.7-2.2l1.3-.9z"
                     fill="#323330"
-                  />
-                </svg>
-              </span>
+                  /></svg
+              ></span>
               <span class="t-name">JavaScript</span>
             </div>
           </div>
@@ -2873,7 +2990,7 @@
             </tr>
             <tr>
               <td>E-Commerce Store</td>
-              <td>80,000 to 250,000+</td>
+              <td>100,000 to 250,000+</td>
               <td style="color: var(--text-muted); font-weight: 400">
                 Product listings, Cart, M-Pesa, Admin dashboard
               </td>
@@ -2890,6 +3007,13 @@
               <td>15,000 to 35,000</td>
               <td style="color: var(--text-muted); font-weight: 400">
                 Single page, Clear CTA, Lead capture form
+              </td>
+            </tr>
+            <tr>
+              <td>Security Audit</td>
+              <td>10,000 to 50,000</td>
+              <td style="color: var(--text-muted); font-weight: 400">
+                ZAP scan, Auth testing, Load testing, Detailed report
               </td>
             </tr>
             <tr>
@@ -3090,19 +3214,6 @@
           <div style="display: flex; gap: 1rem; flex-wrap: wrap">
             <button
               class="btn-send"
-              id="send-btn"
-              onclick="sendViaEmail()"
-              style="
-                flex: 1;
-                background: var(--card);
-                border: 1px solid var(--border-hover);
-                color: var(--text);
-              "
-            >
-              Send via Email
-            </button>
-            <button
-              class="btn-send"
               onclick="sendViaWhatsApp()"
               style="flex: 1; background: #22c55e"
             >
@@ -3189,39 +3300,6 @@
           phone: document.getElementById("phone").value.trim(),
           message: document.getElementById("message").value.trim(),
         };
-      }
-
-      function sendViaEmail() {
-        var d = getFormData();
-        if (!d.name || !d.message) {
-          showToast("Please fill in your name and message.", "error");
-          return;
-        }
-        var btn = document.getElementById("send-btn");
-        btn.disabled = true;
-        btn.textContent = "Sending...";
-        emailjs
-          .send("service_8l9wruo", "template_ans52fq", {
-            name: d.name,
-            email: d.email || "Not provided",
-            title: "New inquiry from " + d.name,
-            message: d.message,
-          })
-          .then(function () {
-            showToast("Message sent! I'll get back to you soon.", "success");
-            ["name", "company", "email", "phone", "message"].forEach(
-              function (id) {
-                document.getElementById(id).value = "";
-              },
-            );
-            btn.disabled = false;
-            btn.textContent = "Send via Email";
-          })
-          .catch(function () {
-            showToast("Failed to send. Please try WhatsApp.", "error");
-            btn.disabled = false;
-            btn.textContent = "Send via Email";
-          });
       }
 
       function sendViaWhatsApp() {
